@@ -5,22 +5,14 @@ import Layout from 'components/layout';
 import Box from 'components/box';
 import Head from 'components/head';
 
-const About = ({ location }) => {
+const Donate = ({ location }) => {
   const data = useStaticQuery(graphql`
-    query aboutQuery {
+    query donateQuery {
       strapiBusiness {
         name
-        description
-        mission_statement
-        contact_email
-        business_hours {
-          Monday
-          Tuesday
-          Wednesday
-          Thursday
-          Friday
-          Saturday
-          Sunday
+        additional_links {
+          paypal
+          gofundme
         }
       }
     }
@@ -36,8 +28,8 @@ const About = ({ location }) => {
   );
 };
 
-About.propTypes = {
+Donate.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export default About;
+export default Donate;

@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 const siteConfig = require('./site-config');
 
 module.exports = {
@@ -11,13 +12,6 @@ module.exports = {
     `gatsby-transformer-json`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-eslint`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `content`,
-        path: `${__dirname}/content`,
-      },
-    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-webpack-size`,
@@ -26,6 +20,26 @@ module.exports = {
       options: {
         rule: {
           include: /images\/.*\.svg$/,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `http://localhost:1337`,
+        queryLimit: 1000, // Default to 100
+        contentTypes: [`business`, `user`],
+        // Possibility to login with a strapi user, when content types are not publically available (optional).
+        loginData: {
+          identifier: "",
+          password: "",
         },
       },
     },

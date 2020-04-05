@@ -1,18 +1,31 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Container } from './nav.css';
+import PropTypes from 'prop-types';
+import { Container, ListItem } from './nav.css';
 
-const Nav = () => (
+// Define all the routes for the nav bar
+const routes = [
+  { url: '/about', title: 'What We Do' },
+  { url: '/giving-options', title: 'Giving Options' },
+  { url: '/get-involved', title: 'Get Involved' },
+  { url: '/events', title: 'Events' },
+  { url: '/donate', title: 'Donate' },
+];
+
+const Nav = ({ currentPage }) => (
   <Container>
     <ul>
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-      <li>
-        <a href="https://github.com/fabe/gatsby-universal">GitHub</a>
-      </li>
+      {routes.map(route => (
+        <ListItem key={route.url} isCurrent={currentPage === route.url}>
+          <Link to={route.url}>{route.title}</Link>
+        </ListItem>
+      ))}
     </ul>
   </Container>
 );
+
+Nav.propTypes = {
+  currentPage: PropTypes.string.isRequired,
+};
 
 export default Nav;

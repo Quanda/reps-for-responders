@@ -22,20 +22,23 @@ const AnimatedContainer = posed.div({
   },
 });
 
-const Header = ({ title }) => (
+const Header = ({ title, currentPage, logoUrl }) => (
   <AnimatedContainer>
     <Container>
-      <Link to="/">
+      <Link id="brand" to="/">
+        <img src={logoUrl} alt="logo" />
         <Title as="h1">{title}</Title>
       </Link>
 
-      <Nav />
+      <Nav currentPage={currentPage} />
     </Container>
   </AnimatedContainer>
 );
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  currentPage: PropTypes.string.isRequired,
+  logoUrl: PropTypes.string.isRequired,
 };
 
 export default Header;

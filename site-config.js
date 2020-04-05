@@ -1,16 +1,10 @@
-const path = require('path');
-
+/* eslint-disable quotes */
 module.exports = {
-  siteTitle: `Gatsby Universal`,
-  siteTitleShort: `GatsbyU`,
-  siteDescription: `An opinionated starter for Gatsby.`,
-  siteUrl: `https://gu.fabianschultz.com`,
+  siteTitle: `Reps for Responders`,
+  siteTitleShort: `Reps for Responders`,
+  siteDescription: ``,
+  siteUrl: `https://www.ericfurspan.com`,
   themeColor: `#000`,
   backgroundColor: `#fff`,
   pathPrefix: null,
-  logo: path.resolve(__dirname, 'src/images/icon.png'),
-  social: {
-    twitter: `gatsbyjs`,
-    fbAppId: `966242223397117`,
-  },
 };

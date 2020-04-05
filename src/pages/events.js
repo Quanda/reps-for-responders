@@ -5,23 +5,11 @@ import Layout from 'components/layout';
 import Box from 'components/box';
 import Head from 'components/head';
 
-const About = ({ location }) => {
+const Events = ({ location }) => {
   const data = useStaticQuery(graphql`
-    query aboutQuery {
+    query eventsQuery {
       strapiBusiness {
         name
-        description
-        mission_statement
-        contact_email
-        business_hours {
-          Monday
-          Tuesday
-          Wednesday
-          Thursday
-          Friday
-          Saturday
-          Sunday
-        }
       }
     }
   `);
@@ -36,8 +24,8 @@ const About = ({ location }) => {
   );
 };
 
-About.propTypes = {
+Events.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export default About;
+export default Events;

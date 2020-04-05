@@ -89,6 +89,13 @@ export default createGlobalStyle`
   }
 
   p {
-    margin-bottom: 2rem;
+    margin: 2rem 0;
+    white-space: pre-line;
+    line-height: 1.45;
+    font-size: 1.1em;
+  }
+
+  [data-reach-dialog-content] {
+    width: 60vw !important;
   }
 `;

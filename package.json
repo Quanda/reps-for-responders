@@ -1,12 +1,11 @@
 {
-  "name": "gatsby-universal",
+  "name": "reps-for-responders",
   "license": "MIT",
-  "author": "Fabian Schultz <desk@fabianschultz.com>",
+  "author": "Eric Furspan <eric.furspan@gmail.com>",
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "gatsby clean && gatsby develop",
     "serve": "gatsby serve",
     "ssr": "npm run build && npm run serve",
-    "format": "prettier --config ./.prettierrc --write src/**/*.js",
     "build:dir": "mkdirp ./public/icons/",
     "build:favicons": "node scripts/favicons",
     "build": "npm run build:dir && npm run build:favicons && gatsby build",
@@ -32,11 +31,11 @@
     "gatsby-plugin-sitemap": "^2.0.12",
     "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-plugin-webpack-size": "^0.0.3",
-    "gatsby-source-filesystem": "^2.0.30",
+    "gatsby-source-filesystem": "^2.2.2",
+    "gatsby-source-strapi": "^0.0.12",
     "gatsby-transformer-json": "^2.1.11",
     "gatsby-transformer-remark": "^2.3.9",
     "gatsby-transformer-sharp": "^2.1.18",
-    "intersection-observer": "^0.5.1",
     "prop-types": "^15.6.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -51,17 +50,14 @@
     "core-js": "^2.6.2",
     "directory-named-webpack-plugin": "^4.0.0",
     "eslint": "^5.12.1",
-    "eslint-config-prettier": "^4.1.0",
     "eslint-loader": "^2.1.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "favicons": "^5.3.0",
     "gatsby-plugin-eslint": "^2.0.3",
     "lighthouse": "^4.0.0",
     "mkdirp": "^0.5.1",
-    "node-gyp": "^3.8.0",
-    "prettier": "^1.16.0"
+    "node-gyp": "^3.8.0"
   }
 }

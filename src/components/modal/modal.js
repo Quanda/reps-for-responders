@@ -37,15 +37,15 @@ export default class Modal extends PureComponent {
   }
 
   render() {
-    const { children, open, showModal, hideModal } = this.props;
+    const { children, open, showModal, buttonText, hideModal } = this.props;
 
     if (typeof document !== 'undefined') {
       this.disableScrolling(open);
     }
-
+    console.log(buttonText);
     return (
       <>
-        <Button onClick={showModal}>Show Modal</Button>
+        <Button onClick={showModal}>{buttonText || 'Open Modal'}</Button>
 
         <Dialog isOpen={open}>
           <Close onClick={hideModal}>
@@ -64,4 +64,5 @@ Modal.propTypes = {
   open: PropTypes.bool.isRequired,
   showModal: PropTypes.func,
   hideModal: PropTypes.func,
+  buttonText: PropTypes.string,
 };
