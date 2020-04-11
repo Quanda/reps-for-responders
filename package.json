@@ -3,12 +3,12 @@
   "license": "MIT",
   "author": "Eric Furspan <eric.furspan@gmail.com>",
   "scripts": {
-    "develop": "gatsby clean && gatsby develop",
+    "dev": "gatsby clean && gatsby develop",
     "serve": "gatsby serve",
     "ssr": "npm run build && npm run serve",
     "build:dir": "mkdirp ./public/icons/",
     "build:favicons": "node scripts/favicons",
-    "build": "npm run build:dir && npm run build:favicons && gatsby build",
+    "build": "yarn build:dir && yarn build:favicons && gatsby build",
     "test": "ava **/*.test.js --verbose"
   },
   "greenkeeper": {

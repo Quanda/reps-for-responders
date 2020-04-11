@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
   -webkit-appearance: none;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.blue.primary};
   border-radius: 5px;
   border: none;
-  color: #757575;
+  color: #fff;
   border: 1px solid #ddd;
   cursor: pointer;
   font-family: inherit;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 500;
   margin: 2rem 0 2rem;
   padding: 1rem 2rem;
@@ -23,7 +23,7 @@ export const Button = styled.button`
   }
 
   &:hover {
-    background-color: #f9f9f9;
+    background-color: ${props => props.theme.colors.blue.dark};
   }
 
   & + & {

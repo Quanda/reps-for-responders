@@ -19,7 +19,41 @@ const GetInvolved = ({ location }) => {
   return (
     <Layout pathname={location.pathname}>
       <Head pageTitle={strapiBusiness.title} />
-      <Box>TO DO</Box>
+      <Box>
+        <form method="post" netlify-honeypot="bot-field" data-netlify="true">
+          <div>
+            <input type="hidden" name="bot-field" />
+          </div>
+          <div>
+            <label>
+              Name
+              <input type="text" name="name" id="name" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Email
+              <input type="email" name="email" id="email" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Subject
+              <input type="text" name="subject" id="subject" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Message
+              <textarea name="message" id="message" rows="5" />
+            </label>
+          </div>
+          <div>
+            <button type="submit">Send</button>
+          </div>
+          <input type="reset" value="Clear" />
+        </form>
+      </Box>
     </Layout>
   );
 };

@@ -137,7 +137,7 @@ const Head = ({
       sizes="16x16"
       type="image/png"
     />
-
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto|Roboto+Slab&display=swap" rel="stylesheet"></link>
     <script type="application/ld+json">
       {JSON.stringify(
         schemaGenerator({

@@ -4,19 +4,24 @@ import { StaticQuery, graphql } from 'gatsby';
 import Head from 'components/head';
 import Header from 'components/header';
 import GlobalStyle from 'global.css.js';
+import { MainContent } from './layout.css';
 
-const Layout = ({ data, pathname, children }) => (
-  <div>
-    <GlobalStyle />
-    <Head />
-    <Header
-      title={data.site.siteMetadata.siteTitle}
-      currentPage={pathname}
-      logoUrl={data.strapiBusiness.logo.publicURL}
-    />
-    {children}
-  </div>
-)
+const Layout = ({ data, pathname, children }) => {
+  return (
+    <div>
+      <GlobalStyle />
+      <Head />
+      <Header
+        title={data.site.siteMetadata.siteTitle}
+        currentPage={pathname}
+        logoUrl={data.strapiBusiness.logo.publicURL}
+      />
+      <MainContent>
+        {children}
+      </MainContent>
+    </div>    
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

@@ -8,18 +8,19 @@ export const Text = styled.span`
       case 'large':
         return '400';
       default:
-        return '500';
+        return '600';
     }
   }};
   font-size: ${({ size }) => () => {
     switch (size) {
       case 'large':
-        return '3.2rem';
+        return '3rem';
       default:
-        return '2rem';
+        return '1.8rem';
     }
   }};
   line-height: 1.2;
+  letter-spacing: 1px;
 
   ${MEDIA.TABLET`
     font-size: ${({ size }) => () => {

@@ -1,7 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
-import { accent } from 'constants/theme';
+import { accent } from 'constants/color';
+import { RockwellBold, Rockwell } from './fonts';
 
 export default createGlobalStyle`
+  @font-face {
+    font-family: "Rockwell";
+    src: url(${Rockwell}) format("truetype");
+  }
+
+  @font-face {
+    font-family: "Rockwell Bold";
+    src: url(${RockwellBold}) format("truetype");
+  }
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -18,8 +29,6 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
   }
 
@@ -34,11 +43,12 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: 'Lato', sans-serif;
+    // font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     line-height: 1;
     font-size: 1.6rem;
-    color: #000;
-    background-color: #fff;
+    color: #212121;
+    background-color: #f6f7f9;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

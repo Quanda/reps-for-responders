@@ -18,8 +18,18 @@ export const Container = styled.nav`
 
 export const ListItem = styled.li`
   text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: ${props => props.isCurrent ? 'bold' : 'initial'};
+  font-size: 18px;
+  font-weight: ${props => props.isCurrent ? 'bold' : 'inherit'};
+
+  a {
+    color: ${props => props.isCurrent ? props.theme.colors.yellow.primary : props.theme.colors.white.primary};
+    transition: color 0.2s ease;
+    text-decoration: none;
+
+    &:hover {
+      color: ${props => props.theme.colors.yellow.primary};
+    }
+  }
 
   & + li {
     margin-left: 2rem;

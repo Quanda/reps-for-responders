@@ -32,7 +32,7 @@ const Index = ({ location }) => {
           Our Mission
         </Title>
         <p>{strapiBusiness.mission_statement.substring(0, strapiBusiness.mission_statement.indexOf('\n'))}</p>
-        <Modal buttonText="Read our full Mission Statement">{<p>{strapiBusiness.mission_statement}</p>}</Modal>
+        <Modal buttonText="Read the full Statement">{<p>{strapiBusiness.mission_statement}</p>}</Modal>
       </Box>
       {/* <Gallery items={data.homeJson.gallery} /> */}
       <div style={{ height: '50vh' }} />

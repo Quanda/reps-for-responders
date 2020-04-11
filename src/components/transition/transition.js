@@ -9,7 +9,7 @@ class Transition extends PureComponent {
 
     const RoutesContainer = posed.div({
       enter: { opacity: 1, delay: timeout, delayChildren: timeout },
-      exit: { opacity: 0 },
+      exit: { opacity: 0.5 },
     });
 
     // To enable page transitions on mount / initial load,
