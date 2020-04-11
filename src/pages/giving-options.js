@@ -5,7 +5,7 @@ import Layout from 'components/layout';
 import Box from 'components/box';
 import Head from 'components/head';
 
-const GivingOptions = () => {
+const GivingOptions = ({ location }) => {
   const data = useStaticQuery(graphql`
     query givingOptionsQuery {
       strapiBusiness {
