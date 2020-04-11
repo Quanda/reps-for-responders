@@ -7,7 +7,7 @@
     "serve": "gatsby serve",
     "ssr": "npm run build && npm run serve",
     "build:dir": "mkdirp ./public/icons/",
-    "build:favicons": "node scripts/favicons",
+    "build:favicons": "node scripts/favicons.js",
     "build": "yarn build:dir && yarn build:favicons && gatsby build",
     "test": "ava **/*.test.js --verbose"
   },
