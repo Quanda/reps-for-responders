@@ -1,4 +1,8 @@
 /* eslint-disable quotes */
+require('dotenv').config({  
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const siteConfig = require('./site-config');
 
 module.exports = {
@@ -33,14 +37,9 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://api.quanda.dev`,
-        queryLimit: 1000, // Default to 100
+        apiURL: process.env.API_URL || "http://localhost:1337",
+        queryLimit: 1000,
         contentTypes: [`business`, `user`],
-        // Possibility to login with a strapi user, when content types are not publically available (optional).
-        loginData: {
-          identifier: "",
-          password: "",
-        },
       },
     },
   ],
