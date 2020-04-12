@@ -1,19 +1,11 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from 'components/layout';
 import Box from 'components/box';
 import Head from 'components/head';
 
-const GivingOptions = ({ location }) => {
-  const data = useStaticQuery(graphql`
-    query givingOptionsQuery {
-      strapiBusiness {
-        name
-      }
-    }
-  `);
-
+const GivingOptions = ({ data, location }) => {
   const { strapiBusiness } = data;
 
   return (
@@ -26,6 +18,15 @@ const GivingOptions = ({ location }) => {
 
 GivingOptions.propTypes = {
   location: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default GivingOptions;
+
+export const query = graphql`
+  query ($strapiBusinessId: String) {
+    strapiBusiness (id: {eq: $strapiBusinessId} ) {
+      ...businessMeta
+    }
+  }
+`;

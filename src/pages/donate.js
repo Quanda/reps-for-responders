@@ -1,23 +1,11 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from 'components/layout';
 import Box from 'components/box';
 import Head from 'components/head';
 
-const Donate = ({ location }) => {
-  const data = useStaticQuery(graphql`
-    query donateQuery {
-      strapiBusiness {
-        name
-        additional_links {
-          paypal
-          gofundme
-        }
-      }
-    }
-  `);
-
+const Donate = ({ data, location }) => {
   const { strapiBusiness } = data;
 
   return (
@@ -30,6 +18,17 @@ const Donate = ({ location }) => {
 
 Donate.propTypes = {
   location: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default Donate;
+
+
+export const query = graphql`
+  query ($strapiBusinessId: String) {
+    strapiBusiness (id: {eq: $strapiBusinessId} ) {
+      ...businessMeta
+      ...businessUrls
+    }
+  }
+`;

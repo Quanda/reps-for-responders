@@ -1,13 +1,17 @@
 const path = require('path');
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
 
-exports.onCreateWebpackConfig = ({
-  stage,
-  getConfig,
-  rules,
-  loaders,
-  actions,
-}) => {
+exports.onCreatePage = ({ page, actions }) => {
+  actions.createPage({
+    ...page,
+    context: {
+      ...page.context,
+      strapiBusinessId: process.env.STRAPI_BUSINESS_ID,
+    },
+  })
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],

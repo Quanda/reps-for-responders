@@ -42,7 +42,7 @@ export default class Modal extends PureComponent {
     if (typeof document !== 'undefined') {
       this.disableScrolling(open);
     }
-    console.log(buttonText);
+
     return (
       <>
         <Button onClick={showModal}>{buttonText || 'Open Modal'}</Button>

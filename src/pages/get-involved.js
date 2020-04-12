@@ -1,19 +1,11 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from 'components/layout';
 import Box from 'components/box';
 import Head from 'components/head';
 
-const GetInvolved = ({ location }) => {
-  const data = useStaticQuery(graphql`
-    query getInvolvedQuery {
-      strapiBusiness {
-        name
-      }
-    }
-  `);
-
+const GetInvolved = ({ data, location }) => {
   const { strapiBusiness } = data;
 
   return (
@@ -60,6 +52,15 @@ const GetInvolved = ({ location }) => {
 
 GetInvolved.propTypes = {
   location: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default GetInvolved;
+
+export const query = graphql`
+  query ($strapiBusinessId: String) {
+    strapiBusiness (id: {eq: $strapiBusinessId} ) {
+      ...businessMeta
+    }
+  }
+`;
