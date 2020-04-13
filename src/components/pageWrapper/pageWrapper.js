@@ -2,37 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import Head from 'components/head';
-import Header from 'components/header';
-import GlobalStyle from 'global.css.js';
-import { MainContent } from './layout.css';
+import BrandHeader from 'components/header/brand';
+import SocialHeader from 'components/header/social';
+import SocialFooter from 'components/footer';
 
-const Layout = ({ data, pathname, children }) => {
+const PageWrapper = ({ data, children }) => {
+  const { contact_links } = data.strapiBusiness;
+
   return (
     <div>
-      <GlobalStyle />
       <Head />
-      <Header
+      <SocialHeader urls={contact_links} />
+      <BrandHeader
         title={data.site.siteMetadata.siteTitle}
-        currentPage={pathname}
         logoUrl={data.strapiBusiness.logo.publicURL}
       />
-      <MainContent>
-        {children}
-      </MainContent>
+      {children}
+      <SocialFooter urls={contact_links} />
     </div>    
   );
 };
 
-Layout.propTypes = {
+PageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   data: PropTypes.object.isRequired,
-  pathname: PropTypes.string.isRequired,
 };
 
-const LayoutWithQuery = props => (
+const PageWrapperWithQuery = props => (
   <StaticQuery
     query={graphql`
-      query LayoutQuery {
+      query PageWrapperQuery {
         site {
           siteMetadata {
             siteTitle
@@ -42,15 +41,16 @@ const LayoutWithQuery = props => (
           logo {
             publicURL
           }
+          ...businessUrls
         }
       }
     `}
-    render={data => <Layout data={data} {...props} />}
+    render={data => <PageWrapper data={data} {...props} />}
   />
 );
 
-LayoutWithQuery.propTypes = {
+PageWrapperWithQuery.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default LayoutWithQuery;
+export default PageWrapperWithQuery;

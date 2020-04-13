@@ -20,6 +20,12 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-webpack-size`,
     {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        includePaths: ["./src/styles"],
+      },
+    },
+    {
       resolve: `gatsby-plugin-react-svg`,
       options: {
         rule: {

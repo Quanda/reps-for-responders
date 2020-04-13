@@ -1,23 +1,22 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import Layout from 'components/layout';
+import PageWrapper from 'components/PageWrapper';
 import Box from 'components/box';
 import Head from 'components/head';
 
-const About = ({ data, location }) => {
+const About = ({ data }) => {
   const { strapiBusiness } = data;
 
   return (
-    <Layout pathname={location.pathname}>
+    <PageWrapper>
       <Head pageTitle={strapiBusiness.title} />
       <Box>TO DO</Box>
-    </Layout>
+    </PageWrapper>
   );
 };
 
 About.propTypes = {
-  location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 

@@ -1,0 +1,92 @@
+@import "~react-bulma-components/src/index.sass";
+@import "./_variables.sass";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
+
+/*
+  default Bulma classes: https://github.com/jgthms/bulma/tree/master/sass/components
+*/
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+nav.level {
+  background-color: $white-dark;
+  padding: 1% 16%;
+  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+
+  .level-item {
+    justify-content: space-evenly;
+
+    * {
+      color: $nypd-blue;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    &:first-of-type {
+      flex-grow: 4;
+    }
+  }
+}
+
+/********************** Core UI Elements ********************** */
+.card, .button {
+  border-radius: 4px;
+}
+
+a {
+  &:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+  }
+}
+.hero {
+  .content { 
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+   }
+}
+
+/* HEADERS */
+header {
+  margin-bottom: 48px;
+}
+h1, h2 {
+  color: $nypd-blue-dark !important;
+}
+
+.subtitle {
+  letter-spacing: 0.25px;
+}
+
+/* NAV */
+.navbar-item {
+  font-size: 18px;
+  font-weight: 600;
+  &:link { color: $white !important; }
+  &:focus { color: $warning !important; }
+  &:hover { color: $warning !important; }
+  &:active { color: $warning !important; }
+}
+
+/* ICONS */
+svg:hover {
+  transform: scale(1.2);
+}
+.fa-youtube { color: #FF0100; }
+.fa-facebook { color: #4167B2; }
+.fa-calendar-day { color: $nypd-blue-light; }
+
+/* FOOTERS */
+.footer {
+  a { color: inherit; }
+  .content {
+    text-align: center;
+    .heading {
+      letter-spacing: 1px;
+      font-weight: normal;
+    }
+  }
+}

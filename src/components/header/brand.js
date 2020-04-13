@@ -1,24 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { Container } from './header.css';
-import Title from 'components/title';
-import Nav from 'components/header/nav';
+import { Container } from './brand.css';
+import Heading from 'react-bulma-components/lib/components/heading';
+import Nav from 'components/nav';
 
-const Header = ({ title, currentPage, logoUrl }) => (
+const Header = ({ title, logoUrl }) => (
   <Container>
     <Link id="brand" to="/">
       <img src={logoUrl} alt="logo" />
-      <Title as="h1" size="large">{title}</Title>
+      <Heading renderAs="h1">{title}</Heading>
     </Link>
 
-    <Nav currentPage={currentPage} />
+    <Nav logoUrl={logoUrl} />
   </Container>
 );
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  currentPage: PropTypes.string.isRequired,
   logoUrl: PropTypes.string.isRequired,
 };
 

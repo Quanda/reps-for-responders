@@ -1,11 +1,11 @@
 import React from 'react';
 import Box from 'components/box';
-import Layout from 'components/layout';
+import PageWrapper from 'components/PageWrapper';
 
 const NotFound = () => (
-  <Layout>
+  <PageWrapper>
     <Box>Not found.</Box>
-  </Layout>
+  </PageWrapper>
 );
 
 export default NotFound;

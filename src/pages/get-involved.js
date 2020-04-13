@@ -1,57 +1,55 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import Layout from 'components/layout';
+import PageWrapper from 'components/PageWrapper';
 import Box from 'components/box';
 import Head from 'components/head';
+import { Field, Control, Label, Input, Textarea } from 'react-bulma-components/lib/components/form';
+import Button from 'react-bulma-components/lib/components/button';
 
-const GetInvolved = ({ data, location }) => {
+const GetInvolved = ({ data }) => {
   const { strapiBusiness } = data;
 
   return (
-    <Layout pathname={location.pathname}>
+    <PageWrapper>
       <Head pageTitle={strapiBusiness.title} />
       <Box>
         <form method="post" netlify-honeypot="bot-field" data-netlify="true">
           <div>
             <input type="hidden" name="bot-field" />
           </div>
-          <div>
-            <label>
-              Name
-              <input type="text" name="name" id="name" />
-            </label>
-          </div>
-          <div>
-            <label>
-              Email
-              <input type="email" name="email" id="email" />
-            </label>
-          </div>
-          <div>
-            <label>
-              Subject
-              <input type="text" name="subject" id="subject" />
-            </label>
-          </div>
-          <div>
-            <label>
-              Message
-              <textarea name="message" id="message" rows="5" />
-            </label>
-          </div>
-          <div>
-            <button type="submit">Send</button>
-          </div>
-          <input type="reset" value="Clear" />
+          <Field>
+            <Label>Name</Label>
+            <Control>
+              <Input type="text" placeholder="Your Name" />
+            </Control>
+          </Field>
+          <Field>
+            <Label>Subject</Label>
+            <Control>
+              <Input placeholder="Subject" />
+            </Control>
+          </Field>          
+          <Field>
+            <Label>Message</Label>
+            <Textarea placeholder="Textarea" />
+            <p className="help">This is a help text</p>
+          </Field>
+          <Field kind="group">
+            <Control>
+              <Button type="reset">Cancel</Button>
+            </Control>
+            <Control>
+              <Button color="link" type="primary">Send Message</Button>
+            </Control>            
+          </Field>          
         </form>
       </Box>
-    </Layout>
+    </PageWrapper>
   );
 };
 
 GetInvolved.propTypes = {
-  location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 

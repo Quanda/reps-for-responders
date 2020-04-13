@@ -11,6 +11,52 @@ exports.onCreatePage = ({ page, actions }) => {
   })
 }
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+
+  const typeDefs = `
+  type StrapiBusiness implements Node {
+    name: String
+    description: String
+    mission_statement: String
+    business_hours: Week
+    contact_links: ContactLinks
+    additional_links: AdditionalLinks
+    events: Events
+  }
+
+  type Event {
+    name: String
+    description: String
+    date: Date
+  }
+  type Events {
+    upcoming: [Event]
+  }
+  type Week {
+    Monday: Date
+    Tuesday: Date
+    Wednesday: Date
+    Thursday: Date
+    Friday: Date
+    Saturday: Date
+    Sunday: Date
+  }
+  type ContactLinks {
+    youtube: String
+    instagram: String
+    facebook: String
+    twitter: String
+    email: String
+  }
+  type AdditionalLinks {
+    paypal: String
+    gofundme: String
+  }
+`
+  createTypes(typeDefs)
+}
+
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
