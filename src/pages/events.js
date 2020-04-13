@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import PageWrapper from 'components/PageWrapper';
+import PageWrapper from 'components/pageWrapper';
 import Box from 'components/box';
 import Head from 'components/head';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from 'components/box';
-import PageWrapper from 'components/PageWrapper';
+import PageWrapper from 'components/pageWrapper';
 
 const NotFound = () => (
   <PageWrapper>
