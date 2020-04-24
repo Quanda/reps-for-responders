@@ -5,14 +5,13 @@ import { Head, Header, Footer } from '.';
 
 const PageWrapper = ({ data, children }) => {
   const { contact_links, logo, name } = data.strapiBusiness;
-  const logoPath = process.env.API_URL + logo.url;
 
   return (
     <div>
       <Head />
       <Header
         title={name}
-        logoUrl={logoPath}
+        logoUrl={logo.url}
       />
       {children}
       <Footer urls={contact_links} />

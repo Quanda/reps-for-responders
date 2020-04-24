@@ -1,6 +1,5 @@
 const path = require('path');
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
-const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
 exports.onCreatePage = ({ page, actions }) => {
   actions.createPage({
@@ -60,6 +59,13 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
 `
   createTypes(typeDefs)
+}
+
+exports.onCreateNode = ({ node }) => {
+  if ( node.internal.type !== null && node.internal.type === 'StrapiBusiness') {
+    // Append API_URL to the logo path
+    node.logo.url = process.env.API_URL + node.logo.url;
+  }
 }
 
 exports.onCreateWebpackConfig = ({ actions }) => {
