@@ -1,10 +1,15 @@
 import React from 'react';
-import Box from 'components/box';
-import PageWrapper from 'components/pageWrapper';
+import { PageWrapper } from '../components';
+import Heading from 'react-bulma-components/lib/components/heading';
+import Hero from 'react-bulma-components/lib/components/hero';
 
 const NotFound = () => (
   <PageWrapper>
-    <Box>Not found.</Box>
+    <Hero size="large" color="warning">
+      <Hero.Body>
+        <Heading renderAs="h2">404 - Page Not Found.</Heading>                       
+      </Hero.Body>
+    </Hero>
   </PageWrapper>
 );
 

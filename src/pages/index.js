@@ -1,23 +1,22 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import PageWrapper from 'components/pageWrapper';
-import Button from 'react-bulma-components/lib/components/button';
 import Columns from 'react-bulma-components/lib/components/columns';
-import Box from 'react-bulma-components/lib/components/box';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Content from 'react-bulma-components/lib/components/content';
 import Card from 'react-bulma-components/lib/components/card';
 import Media from 'react-bulma-components/lib/components/media';
 import Level from 'react-bulma-components/lib/components/level';
 import Hero from 'react-bulma-components/lib/components/hero';
+import List from 'react-bulma-components/lib/components/list';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons'
-import List from 'react-bulma-components/lib/components/list';
+import { PageWrapper, ContactForm, Modal } from '../components';
 
 const Index = ({ data }) => {
-  const { events, mission_statement } = data.strapiBusiness;
-  
+  const { events, mission_statement, contact_links } = data.strapiBusiness;
+  const { youtube, instagram, facebook, twitter } = contact_links;
+
   return (
     <PageWrapper>
       <Columns>
@@ -53,52 +52,100 @@ const Index = ({ data }) => {
           </Card>
         </Columns.Column>
         <Columns.Column />
-      </Columns>
+      </Columns><br/><br/>
       
-      <Level>
         <Hero size="small" color="danger">
           <Hero.Body>
-            <Columns style={{ width: '75%', margin: 'auto' }}>
+            <Columns style={{ width: '80%', margin: 'auto' }}>
               <Columns.Column size="one-third">
                 <Heading renderAs="h3">OUR MISSION</Heading> 
               </Columns.Column>
               <Columns.Column>
                 <Content>{`"${mission_statement.substring(0, 273)}.."`}</Content>
-                <Button outlined color="white">
-                  Read the full Statement
-                </Button>              
+                <Modal
+                  button={{ color: 'white', text: 'Read the full Statement' }}
+                  modal={{ closeOnBlur: true, showClose: true }}
+                >
+                  <Hero color="white">
+                    <Hero.Body>
+                      <Heading renderAs="h3">OUR MISSION</Heading> 
+                      <Content>{mission_statement}</Content>           
+                    </Hero.Body>
+                  </Hero>                  
+                </Modal>            
               </Columns.Column>
             </Columns>
           </Hero.Body>
-        </Hero>
-      </Level>
+        </Hero><br/><br/>
+
       <Columns>
         <Columns.Column></Columns.Column>
-          <Columns.Column size="half">
-            <Box>
-              <Heading renderAs="h2">Upcoming Events</Heading>
-              <List>
-                {events.upcoming.map((e, i) => (
-                  <Card key={i}>
-                    <Card.Content>
-                      <Media>
-                        <Media.Item renderAs="figure" position="left">
-                          <FontAwesomeIcon size="2x" icon={faCalendarDay} />
-                        </Media.Item>
-                        <Media.Item>
-                          <Heading renderAs="h5" size={5}>{e.date}</Heading>
-                          <Heading renderAs="h5" subtitle size={5}>{e.name}</Heading>
-                        </Media.Item>
-                      </Media>
-                      <Content>{e.description}</Content>
-                    </Card.Content>
-                  </Card>
-                ))}  
-              </List>
-            </Box>
+          {/* EVENTS */}
+          <Columns.Column size="two-fifths">
+            <Heading renderAs="h2">Upcoming Events</Heading>
+            <List>
+              {events.upcoming.map((e, i) => (
+                <Card key={i}>
+                  <Card.Content>
+                    <Media>
+                      <Media.Item renderAs="figure" position="left">
+                        <FontAwesomeIcon size="2x" icon={faCalendarDay} />
+                      </Media.Item>
+                      <Media.Item>
+                        <Heading renderAs="h5" size={5}>{e.date}</Heading>
+                        <Heading renderAs="h5" subtitle size={5}>{e.name}</Heading>
+                      </Media.Item>
+                    </Media>
+                    <Content>{e.description}</Content>
+                  </Card.Content>
+                </Card>
+              ))}  
+            </List>
+          </Columns.Column>
+          {/* IMAGE GALLERY */}
+          <Columns.Column size="two-fifths">
+            add images/gallery here
           </Columns.Column>
         <Columns.Column></Columns.Column>
-      </Columns>
+      </Columns><br/><br/>
+      
+      <Hero color="light">
+        <Hero.Body>
+          <Columns>
+            <Columns.Column></Columns.Column>
+            <Columns.Column size="half">
+              <Heading style={{ textAlign: 'center' }} renderAs="h2" size={4}>Find us on social media</Heading><br/>
+              <Level>
+                {youtube && <Level.Item>
+                  <Content renderAs="a" target="_blank" href={youtube}>
+                    <FontAwesomeIcon size="3x" icon={[ 'fab', 'youtube' ]} />
+                  </Content>
+                </Level.Item>}
+                {instagram && <Level.Item>
+                  <Content renderAs="a" target="_blank" href={instagram}>
+                    <FontAwesomeIcon size="3x" icon={[ 'fab', 'instagram' ]} />
+                  </Content>
+                </Level.Item>}
+                {facebook && <Level.Item>
+                  <Content renderAs="a" target="_blank" href={facebook}>
+                    <FontAwesomeIcon size="3x" icon={[ 'fab', 'facebook' ]} />
+                  </Content>
+                </Level.Item>}
+                {twitter && <Level.Item>
+                  <Content renderAs="a" target="_blank" href={twitter}>
+                    <FontAwesomeIcon size="3x" icon={[ 'fab', 'twitter' ]} />
+                  </Content>
+                </Level.Item>}
+              </Level>
+              <br/><br/>
+              {/* CONTACT FORM */}
+              <ContactForm />
+            </Columns.Column>
+            <Columns.Column></Columns.Column>
+          </Columns>        
+        </Hero.Body>
+      </Hero>
+
     </PageWrapper>
   );
 };

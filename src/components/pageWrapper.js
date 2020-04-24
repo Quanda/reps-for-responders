@@ -1,24 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import Head from 'components/head';
-import BrandHeader from 'components/header/brand';
-import SocialHeader from 'components/header/social';
-import SocialFooter from 'components/footer';
+import { Head, Header, Footer } from '.';
 
 const PageWrapper = ({ data, children }) => {
-  const { contact_links } = data.strapiBusiness;
+  const { contact_links, logo, name } = data.strapiBusiness;
 
   return (
     <div>
       <Head />
-      <SocialHeader urls={contact_links} />
-      <BrandHeader
-        title={data.site.siteMetadata.siteTitle}
-        logoUrl={data.strapiBusiness.logo.publicURL}
+      <Header
+        title={name}
+        logoUrl={logo.publicURL}
       />
       {children}
-      <SocialFooter urls={contact_links} />
+      <Footer urls={contact_links} />
     </div>    
   );
 };
@@ -31,13 +27,9 @@ PageWrapper.propTypes = {
 const PageWrapperWithQuery = props => (
   <StaticQuery
     query={graphql`
-      query PageWrapperQuery {
-        site {
-          siteMetadata {
-            siteTitle
-          }
-        }
-        strapiBusiness {
+      query ($strapiBusinessId: String) {
+        strapiBusiness (id: {eq: $strapiBusinessId} ) {
+          name
           logo {
             publicURL
           }
