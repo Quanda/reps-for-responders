@@ -1,5 +1,6 @@
 const path = require('path');
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
+const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
 exports.onCreatePage = ({ page, actions }) => {
   actions.createPage({
@@ -12,19 +13,23 @@ exports.onCreatePage = ({ page, actions }) => {
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
+  const { createTypes } = actions;
 
   const typeDefs = `
   type StrapiBusiness implements Node {
     name: String
     description: String
     mission_statement: String
+    logo: Logo
     business_hours: Week
     contact_links: ContactLinks
     additional_links: AdditionalLinks
     events: Events
   }
 
+  type Logo {
+    url: String
+  }
   type Event {
     name: String
     description: String
