@@ -13,7 +13,7 @@ if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir);
 }
 
-const source = 'src/images/logo.jpeg';
+const source = 'static/icon.jpeg';
 const configuration = {
   path: '/icons/',
   appName: siteTitleShort,
