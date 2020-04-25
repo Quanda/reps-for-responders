@@ -6,6 +6,7 @@ const {
   siteTitleShort,
   themeColor,
   backgroundColor,
+  iconPath,
 } = require('../site-config');
 
 const dir = path.resolve(__dirname, '../public/icons/');
@@ -13,7 +14,7 @@ if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir);
 }
 
-const source = 'static/icon.jpeg';
+const source = iconPath;
 const configuration = {
   path: '/icons/',
   appName: siteTitleShort,
