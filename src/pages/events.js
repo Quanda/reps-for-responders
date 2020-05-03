@@ -8,7 +8,7 @@ const Events = ({ data }) => {
 
   return (
     <PageWrapper>
-      <Head pageTitle={strapiBusiness.title} />
+      <Head pageTitle={strapiBusiness.name} />
     </PageWrapper>
   );
 };
