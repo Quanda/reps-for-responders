@@ -5,11 +5,11 @@ import { Head, Header, Footer } from '.';
 
 const Page = ({ data, children }) => {
   const { contact_links, name, multimedia } = data.strapiBusiness;
-  const logo = multimedia.find(obj => obj.name === 'logo').localFile;
+  const logo = multimedia.find(obj => obj.name === 'logo');
   return (
     <div>
       <Head />
-      <Header title={name} logoUrl={logo.url} />
+      <Header title={name} logoUrl={logo && logo.localFile.url} />
       {children}
       <Footer urls={contact_links} />
     </div>    
