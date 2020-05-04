@@ -47,7 +47,7 @@ export const Container = styled.header`
 const Header = ({ title, logoUrl }) => (
   <Container>
     <Link id="brand" to="/">
-      <img src={logoUrl} alt="logo" />
+      <img src={logoUrl} alt="logo" width={75} height={75} />
       <Heading renderAs="h1">{title}</Heading>
     </Link>
 
