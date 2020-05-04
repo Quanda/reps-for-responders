@@ -60,7 +60,6 @@ h1 {
 /* NAV */
 .navbar-item {
   font-size: 18px;
-  font-weight: 600;
   &:link { color: $white !important; }
   &:focus { color: $warning !important; }
   &:hover { color: $warning !important; }

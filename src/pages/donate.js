@@ -1,15 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { PageWrapper, Head } from '../components';
+import { Page, Head } from '../components';
 
 const Donate = ({ data }) => {
   const { strapiBusiness } = data;
 
   return (
-    <PageWrapper>
+    <Page>
       <Head pageTitle={strapiBusiness.name} />
-    </PageWrapper>
+    </Page>
   );
 };
 

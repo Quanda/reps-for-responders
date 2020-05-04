@@ -1,6 +1,4 @@
-export const accent = '#122E82';
-
-export const theme = {
+export default {
   colors: {
     blue: {
       primary: '#163E8C',

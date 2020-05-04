@@ -1,5 +1,6 @@
 const path = require('path');
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
+const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
 exports.onCreatePage = ({ page, actions }) => {
   actions.createPage({
@@ -19,15 +20,11 @@ exports.createSchemaCustomization = ({ actions }) => {
     name: String
     description: String
     mission_statement: String
-    logo: Logo
     business_hours: Week
     contact_links: ContactLinks
     additional_links: AdditionalLinks
     events: Events
-  }
-
-  type Logo {
-    url: String
+    multimedia: [Multimedia]
   }
   type Event {
     name: String
@@ -57,14 +54,31 @@ exports.createSchemaCustomization = ({ actions }) => {
     paypal: String
     gofundme: String
   }
+  type Multimedia {
+    name: String
+    url: String
+  }
 `
   createTypes(typeDefs)
 }
 
-exports.onCreateNode = ({ node }) => {
+exports.onCreateNode = async ({ node, actions, store, cache }) => {
+  const { createNode } = actions
+
   if ( node.internal.type !== null && node.internal.type === 'StrapiBusiness') {
-    // Append API_URL to the logo path
-    node.logo.url = process.env.API_URL + node.logo.url;
+    for ( const media of node.multimedia) {
+      const fileNode = await createRemoteFileNode({
+        url: process.env.API_URL + media.url,
+        store,
+        cache,
+        createNode,
+        createNodeId: id => id
+      })
+  
+      if (fileNode) {
+        media.localFile___NODE = fileNode.id;
+      } 
+    }
   }
 }
 

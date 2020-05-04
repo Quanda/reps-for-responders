@@ -11,14 +11,14 @@ import Hero from 'react-bulma-components/lib/components/hero';
 import List from 'react-bulma-components/lib/components/list';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons'
-import { PageWrapper, ContactForm, Modal } from '../components';
+import { Page, ContactForm, Modal } from '../components';
 
 const Index = ({ data }) => {
   const { events, mission_statement, contact_links } = data.strapiBusiness;
   const { youtube, instagram, facebook, twitter } = contact_links;
 
   return (
-    <PageWrapper>
+    <Page>
       <Columns>
         <Columns.Column />
         <Columns.Column size="one-quarter">
@@ -146,7 +146,7 @@ const Index = ({ data }) => {
         </Hero.Body>
       </Hero>
 
-    </PageWrapper>
+    </Page>
   );
 };
 
@@ -195,15 +195,19 @@ export const query = graphql`
     }
   }
 
-  fragment allBusinessFields on StrapiBusiness {
-    ...businessMeta
-    ...businessUrls
-    ...businessEvents
+  fragment multimediaObjects on StrapiBusiness {
+    multimedia {
+      name
+      url
+    }
   }
 
   query ($strapiBusinessId: String) {
     strapiBusiness (id: {eq: $strapiBusinessId} ) {
-      ...allBusinessFields
+      ...businessMeta
+      ...businessUrls
+      ...businessEvents
+      ...multimediaObjects
     }
   }
 `;
