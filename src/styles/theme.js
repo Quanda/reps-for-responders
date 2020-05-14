@@ -2,7 +2,7 @@ export default {
   colors: {
     blue: {
       primary: '#163E8C',
-      light: '##6380A6',
+      light: '#6380A6',
       dark: '#1C2F40',
     },
     tan: {

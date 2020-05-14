@@ -1,11 +1,15 @@
 @import "~react-bulma-components/src/index.sass";
 @import "./_variables.sass";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 
-/* see Bulma defaults: https://github.com/jgthms/bulma/tree/master/sass/components */
-
+/*
+  see Bulma defaults:
+  https://github.com/jgthms/bulma/tree/master/sass/components
+*/
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue", sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+  background-color: $white-dark;
 }
 
 nav.level {
@@ -31,26 +35,32 @@ nav.level {
     letter-spacing: 0.5px;
     line-height: 28px;
    }
-
-   &.is-white .title {
-    color: $nypd-blue !important;
-  }
 }
 
 .list .card {
   margin-bottom: 12px;
 }
 
+.quot {
+  font-size: 2.5rem;
+}
+
 .media-content {
   overflow-x: visible !important;
 }
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
 
 /* HEADERS */
-header {
-  margin-bottom: 48px;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Play', sans-serif;
 }
 h1 {
-  color: $nypd-blue-dark !important;
+  color: $black !important;
 }
 
 .subtitle {
@@ -67,7 +77,7 @@ h1 {
 }
 
 /* ICONS */
-.level-item svg:hover {
+.level-item svg:hover, .donate img:hover{
   transform: scale(1.2);
 }
 
