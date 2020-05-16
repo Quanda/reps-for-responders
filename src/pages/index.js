@@ -13,56 +13,77 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 import { Page, ContactForm, Modal, Gallery } from '../components';
 import gofundmeLogo from '../../static/img/gofundme.png';
-import paypalLogo from '../../static/img/paypal.svg';
+import paypalLogo from '../../static/img/paypal.png';
 
 const Index = ({ data }) => {
   const { events, mission_statement, contact_links, additional_links, multimedia } = data.strapiBusiness;
   const { youtube, instagram, facebook, twitter } = contact_links;
 
-  // Filter images for the gallery
+  // Filter images for the gallery items
   const galleryImages = multimedia.filter(obj => obj.name.startsWith('gallery_')).map(img => img.localFile.url);
 
   return (
     <Page>
-      <Hero size="small" color="white">
+      {/* ABOUT US */}
+      <Hero color="white">
         <Hero.Body>
+          <Heading style={{ textAlign: 'center' }} renderAs="h2">ABOUT US</Heading>
           <Columns>
-            <Columns.Column />
-            <Columns.Column size="one-quarter">
+            <Columns.Column>
               <Card>
                 <Card.Content>
-                  <Heading renderAs="h3" size={5}>A header here</Heading>
-                  <Content>
-                    Some content here.
+                  <Heading renderAs="h3" size={5}>WHO WE ARE</Heading>
+                  <Content renderAs="ul">
+                    <Content renderAs="li">
+                      <i>Reps for Responders</i> is a non-profit fitness gym in New City, NY founded by NYPD officer Frank Voce.
+                    </Content>
+                    <Content renderAs="li">
+                      The RFR team continues to add caring & dedicated individuals who have experienced or witnessed the impact of trauma - and have a desire a help others.
+                    </Content>
                   </Content>
                 </Card.Content>
               </Card>
             </Columns.Column>
-            <Columns.Column size="one-quarter">
+            <Columns.Column>
               <Card>
                 <Card.Content>
-                  <Heading renderAs="h3" size={5}>Another header here</Heading>
-                  <Content>
-                    Some content here.
+                  <Heading renderAs="h3" size={5}>WHAT WE DO</Heading>
+                  <Content renderAs="ul">
+                    <Content renderAs="li">
+                      Free gym membership to all first responders and military personnel.
+                    </Content>
+                    <Content renderAs="li">
+                      Online fitness classes.
+                    </Content>
+                    <Content renderAs="li">
+                      Virtual support groups.
+                    </Content>
                   </Content>
                 </Card.Content>
               </Card>
             </Columns.Column> 
-            <Columns.Column size="one-quarter">
+            <Columns.Column>
               <Card>
                 <Card.Content>
-                  <Heading renderAs="h3" size={5}>Another header here</Heading>
-                  <Content>
-                    More content here
+                  <Heading renderAs="h3" size={5}>HOW TO HELP</Heading>
+                  <Content renderAs="ul">
+                    <Content renderAs="li">
+                      Want to get involved or learn more?&nbsp;
+                      <Content renderAs="a" href="#contactus">Message us.</Content>
+                    </Content>
+                    <Content renderAs="li">
+                      Able to donate?&nbsp;
+                      <Content renderAs="a" href="#donate">See donation options.</Content>
+                    </Content>
                   </Content>
                 </Card.Content>
               </Card>
             </Columns.Column>
-            <Columns.Column />
           </Columns>
         </Hero.Body>
       </Hero>
 
+      {/* SOCIAL MEDIA */}
       <Hero size="medium" color="white">
         <Hero.Body>
           <Columns>
@@ -97,7 +118,8 @@ const Index = ({ data }) => {
         </Hero.Body>
       </Hero>
 
-      <Hero size="medium" color="danger">
+      {/* MISSION STATEMENT */}
+      <Hero color="danger">
         <Hero.Body>
           <Columns style={{ width: '80%', margin: 'auto' }}>
             <Columns.Column size="one-third">
@@ -121,31 +143,33 @@ const Index = ({ data }) => {
         </Hero.Body>
       </Hero>
 
-      <Hero size="medium" color="white">
+      <Hero color="white">
         <Hero.Body>
           <Columns>
             <Columns.Column></Columns.Column>
               {/* EVENTS */}
               <Columns.Column size="two-fifths">
                 <Heading renderAs="h2">Events</Heading>
-                <List>
-                  {events.upcoming.map((e, i) => (
-                    <Card key={i}>
-                      <Card.Content>
-                        <Media>
-                          <Media.Item renderAs="figure" position="left">
-                            <FontAwesomeIcon size="2x" icon={faCalendarDay} />
-                          </Media.Item>
-                          <Media.Item>
-                            <Heading renderAs="h5" size={5}>{e.date}</Heading>
-                            <Heading renderAs="h5" subtitle size={5}>{e.name}</Heading>
-                          </Media.Item>
-                        </Media>
-                        <Content>{e.description}</Content>
-                      </Card.Content>
-                    </Card>
-                  ))}  
-                </List>
+                {events && events.length > 0 ? (
+                  <List>
+                    {events.map((e, i) => (
+                      <Card key={i}>
+                        <Card.Content>
+                          <Media>
+                            <Media.Item renderAs="figure" position="left">
+                              <FontAwesomeIcon size="2x" icon={faCalendarDay} />
+                            </Media.Item>
+                            <Media.Item>
+                              <Heading renderAs="h5" size={5}>{e.date}</Heading>
+                              <Heading renderAs="h5" subtitle size={5}>{e.name}</Heading>
+                            </Media.Item>
+                          </Media>
+                          <Content>{e.description}</Content>
+                        </Card.Content>
+                      </Card>
+                    ))}  
+                  </List>
+                ) : <Content>No events posted at this time.</Content>}
               </Columns.Column>
               {/* IMAGE GALLERY */}
               <Columns.Column size="two-fifths">
@@ -158,20 +182,20 @@ const Index = ({ data }) => {
       </Hero>
   
       {/* DONATION */}
-      <Hero size="medium">
+      <Hero id="donate" size="medium">
         <Hero.Body>
           <Columns>
-            <Columns.Column size="two-fifths">
-              <Heading renderAs="h2">HELP SUPPORT OUR NATION&apos;s FIRST RESPONDERS</Heading>
-              <Heading renderAs="h3" subtitle>Your contributions will help us ease the pain of our First Responders by supporting our events and staff in providing a safe haven to our struggling warriors.</Heading><br/>
+            <Columns.Column>
+              <Heading renderAs="h2">HELP SUPPORT OUR FIRST RESPONDERS</Heading>
+              <Heading renderAs="h3" subtitle>Your donations will help us to continue to provide for our First Responders by supporting our training facility and enabling future events.</Heading><br/>
             </Columns.Column>
             <Columns.Column>
-              <Content className="row">
+              <Content className="col">
                 <Content renderAs="a" href={additional_links.paypal} target="_blank" rel="noopener noreferrer" className="donate">
-                  <img src={paypalLogo} alt="paypal" width={100} />
-                </Content>
+                  <img src={paypalLogo} alt="paypal" width={150} />
+                </Content><br/>
                 <Content renderAs="a" href={additional_links.gofundme} target="_blank" rel="noopener noreferrer" className="donate">
-                  <img src={gofundmeLogo} alt="gofundme" width={200} />
+                  <img src={gofundmeLogo} alt="gofundme" width={150} />
                 </Content>      
               </Content>                       
             </Columns.Column>
@@ -179,12 +203,12 @@ const Index = ({ data }) => {
         </Hero.Body>
       </Hero>   
       
-      <Hero size="small" color="white">
+      {/* CONTACT FORM */}
+      <Hero id="contactus" size="small" color="white">
         <Hero.Body>
           <Columns>
             <Columns.Column></Columns.Column>
             <Columns.Column size="half">
-              {/* CONTACT FORM */}
               <ContactForm />
             </Columns.Column>
             <Columns.Column></Columns.Column>
@@ -233,11 +257,9 @@ export const query = graphql`
 
   fragment businessEvents on StrapiBusiness {
     events {
-      upcoming {
-        name
-        description
-        date
-      }
+      name
+      description
+      date
     }
   }
 

@@ -20,30 +20,36 @@ export const Container = styled.div`
     border-radius: 6px;
   }
 
+  &:hover {
+    .next, .prev {
+      color: #FFFFFF;
+    }
+  }
+
   .next,
   .prev {
-    top: calc(50% - 20px);
     position: absolute;
-    background: white;
-    border-radius: 30px;
-    width: 36px;
-    height: 36px;
+    background: transparent;
+    color: transparent;
+    border: 0;
+    top: calc(50% - 20px);
+    width: 42px;
+    height: 42px;
     display: flex;
     justify-content: center;
     align-items: center;
     user-select: none;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
+    font-size: 24px;
     z-index: 2;
   }
 
   .next {
-    right: 10px;
+    right: 0;
   }
   
   .prev {
-    left: 10px;
+    left: 0;
     transform: scale(-1);
   }
 `;

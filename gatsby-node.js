@@ -23,16 +23,13 @@ exports.createSchemaCustomization = ({ actions }) => {
     business_hours: Week
     contact_links: ContactLinks
     additional_links: AdditionalLinks
-    events: Events
+    events: [Event]
     multimedia: [Multimedia]
   }
   type Event {
     name: String
     description: String
     date: Date
-  }
-  type Events {
-    upcoming: [Event]
   }
   type Week {
     Monday: Date

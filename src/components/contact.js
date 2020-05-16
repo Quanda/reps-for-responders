@@ -23,7 +23,7 @@ class ContactForm extends React.Component {
     return (
       <Box>
         <Heading renderAs="h2" size={4}>Quick Contact Form</Heading>
-        <Heading renderAs="h6" size={6} subtitle>&nbsp;Contact us for more information</Heading>
+        <Heading renderAs="h6" size={6} subtitle>We&apos;d love to hear from you</Heading>
         <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
           <input type="hidden" name="bot-field" />
           <Field>
