@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import { Head, Header, Footer } from '.';
+import { Head, Header } from '.';
 
 const Page = ({ data, children }) => {
-  const { contact_links, name, multimedia } = data.strapiBusiness;
+  const { name, multimedia } = data.strapiBusiness;
   const logo = multimedia.find(obj => obj.name === 'logo');
   return (
     <div>
       <Head />
       <Header title={name} logoUrl={logo && logo.localFile.url} />
       {children}
-      <Footer urls={contact_links} />
     </div>    
   );
 };
@@ -32,14 +31,7 @@ const PageWithQuery = props => (
           localFile {
             url
           }
-        }
-        contact_links {
-          instagram
-          youtube
-          facebook
-          twitter
-          email
-        }      
+        }     
       }
     }
   `}

@@ -11,7 +11,7 @@ import Hero from 'react-bulma-components/lib/components/hero';
 import List from 'react-bulma-components/lib/components/list';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons'
-import { Page, ContactForm, Modal, Gallery } from '../components';
+import { Page, ContactForm, Modal, Gallery, Footer } from '../components';
 import gofundmeLogo from '../../static/img/gofundme.png';
 import paypalLogo from '../../static/img/paypal.png';
 
@@ -215,7 +215,7 @@ const Index = ({ data }) => {
           </Columns>        
         </Hero.Body>
       </Hero>
-
+      <Footer urls={contact_links} />
     </Page>
   );
 };

@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 
 const NotFound = () => (
   <Page>
-    <Hero size="large" color="dark" style={{ textAlign: 'center' }}>
+    <Hero size="large" color="white" style={{ textAlign: 'center' }}>
       <Hero.Body>
         <Heading renderAs="h2">Sorry, this page was not found.</Heading>
         <Link to="/">Back to the homepage</Link>                     
