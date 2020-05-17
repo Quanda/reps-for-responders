@@ -6,6 +6,7 @@ import Hero from 'react-bulma-components/lib/components/hero';
 import Footer from 'react-bulma-components/lib/components/footer';
 import Container from 'react-bulma-components/lib/components/container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import usaIcon from '../../static/img/usa.jpg';
 
 const SocialMediaFooter = ({ urls }) => {
   const { youtube, instagram, facebook, twitter, email } = urls;
@@ -17,6 +18,7 @@ const SocialMediaFooter = ({ urls }) => {
           <Container>
             <Level renderAs="nav">
               <Level.Item>
+                <img src={usaIcon} alt="usa flag" width={50} />
                 <Heading renderAs="a" target="_blank" href={`mailto:${email}`} subtitle size={6}>{urls.email}</Heading>        
               </Level.Item>
               <Level.Item>

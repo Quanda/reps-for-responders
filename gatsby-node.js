@@ -60,6 +60,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     url: String
   }
   type NewsObject {
+    source: String
     url: String
     title: String
   }

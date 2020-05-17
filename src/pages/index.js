@@ -12,11 +12,11 @@ import List from 'react-bulma-components/lib/components/list';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 import { Page, ContactForm, Modal, Gallery, Footer } from '../components';
-import gofundmeLogo from '../../static/img/gofundme.png';
-import paypalLogo from '../../static/img/paypal.png';
-import anchorFmPodcastLogo from '../../static/img/anchorfm.png';
-import spotifyPodcastLogo from '../../static/img/spotify.png';
-import applePodcastLogo from '../../static/img/apple-podcasts.png';
+import gofundmeLogo from '../../static/img/donate/gofundme.png';
+import paypalLogo from '../../static/img/donate/paypal.png';
+import anchorFmPodcastLogo from '../../static/img/podcast/anchorfm.png';
+import spotifyPodcastLogo from '../../static/img/podcast/spotify.png';
+import applePodcastLogo from '../../static/img/podcast/apple.png';
 
 const Index = ({ data }) => {
   const { events, mission_statement, contact_links, additional_links, gallery, news } = data.strapiBusiness;
@@ -28,7 +28,7 @@ const Index = ({ data }) => {
       {/* ABOUT US */}
       <Hero color="white">
         <Hero.Body>
-          <Heading style={{ textAlign: 'center' }} renderAs="h2">ABOUT US</Heading>
+          <Heading renderAs="h2" className="centered">ABOUT US</Heading>
           <Columns>
             <Columns.Column>
               <Card>
@@ -105,6 +105,7 @@ const Index = ({ data }) => {
                     {news.map((n, i) => (
                       <Card key={i}>
                         <Card.Content>
+                          <Heading renderAs="h6" size={6}>{n.source}</Heading>
                           <Content renderAs="a" href={n.url} target="_blank" rel="noopener noreferrer">
                             {n.title}
                           </Content>
@@ -144,22 +145,22 @@ const Index = ({ data }) => {
               <Level>
                 {youtube && <Level.Item>
                   <Content renderAs="a" target="_blank" href={youtube}>
-                    <FontAwesomeIcon size="3x" icon={[ 'fab', 'youtube' ]} />
+                    <FontAwesomeIcon size="4x" icon={[ 'fab', 'youtube' ]} />
                   </Content>
                 </Level.Item>}
                 {instagram && <Level.Item>
                   <Content renderAs="a" target="_blank" href={instagram}>
-                    <FontAwesomeIcon size="3x" icon={[ 'fab', 'instagram' ]} />
+                    <FontAwesomeIcon size="4x" icon={[ 'fab', 'instagram' ]} />
                   </Content>
                 </Level.Item>}
                 {facebook && <Level.Item>
                   <Content renderAs="a" target="_blank" href={facebook}>
-                    <FontAwesomeIcon size="3x" icon={[ 'fab', 'facebook' ]} />
+                    <FontAwesomeIcon size="4x" icon={[ 'fab', 'facebook' ]} />
                   </Content>
                 </Level.Item>}
                 {twitter && <Level.Item>
                   <Content renderAs="a" target="_blank" href={twitter}>
-                    <FontAwesomeIcon size="3x" icon={[ 'fab', 'twitter' ]} />
+                    <FontAwesomeIcon size="4x" icon={[ 'fab', 'twitter' ]} />
                   </Content>
                 </Level.Item>}
               </Level>
@@ -178,7 +179,7 @@ const Index = ({ data }) => {
               <Heading renderAs="h3">OUR MISSION</Heading> 
             </Columns.Column>
             <Columns.Column>
-              <Content><span className="quot">&quot;</span>{mission_statement.substring(0, 273)}...<span className="quot">&quot;</span></Content><br/>
+              <Content>{mission_statement.substring(0, 273)}...</Content><br/>
               <Modal
                 button={{ color: 'white', text: 'Read the full Statement' }}
                 modal={{ closeOnBlur: true, showClose: true }}
@@ -330,6 +331,7 @@ export const query = graphql`
 
   fragment businessNews on StrapiBusiness {
     news {
+      source
       title
       url
     }

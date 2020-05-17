@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Heading from 'react-bulma-components/lib/components/heading';
 import logo from '../../static/img/logo.png';
-import usaIcon from '../../static/img/usa.png';
 
 const HeaderLink = styled(Link)`
   display: flex;
@@ -32,9 +31,6 @@ const HeaderLink = styled(Link)`
 
 const Header = ({ title, caption }) => (
   <header>
-    <div style={{ position: 'absolute', right: 8, top: 8 }}>
-      <img src={usaIcon} alt="responder icons" width={24} />
-    </div>
     <HeaderLink to="/">
       <img src={logo} alt="logo" />
       <div className="col">
