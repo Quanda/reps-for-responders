@@ -14,9 +14,12 @@ import { faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 import { Page, ContactForm, Modal, Gallery, Footer } from '../components';
 import gofundmeLogo from '../../static/img/gofundme.png';
 import paypalLogo from '../../static/img/paypal.png';
+import anchorFmPodcastLogo from '../../static/img/anchorfm.png';
+import spotifyPodcastLogo from '../../static/img/spotify.png';
+import applePodcastLogo from '../../static/img/apple-podcasts.png';
 
 const Index = ({ data }) => {
-  const { events, mission_statement, contact_links, additional_links, gallery } = data.strapiBusiness;
+  const { events, mission_statement, contact_links, additional_links, gallery, news } = data.strapiBusiness;
   const { youtube, instagram, facebook, twitter } = contact_links;
   const galleryImages = gallery.map(img => img.localFile.url);
 
@@ -86,6 +89,47 @@ const Index = ({ data }) => {
                 </Card.Content>
               </Card>
             </Columns.Column>
+          </Columns>
+        </Hero.Body>
+      </Hero>
+
+      <Hero color="white">
+        <Hero.Body>
+          <Columns>
+            <Columns.Column></Columns.Column>
+              {/* IN THE NEWS */}
+              <Columns.Column size="two-fifths">
+                <Heading renderAs="h2">In the News</Heading>
+                {news && news.length > 0 ? (
+                  <List>
+                    {news.map((n, i) => (
+                      <Card key={i}>
+                        <Card.Content>
+                          <Content renderAs="a" href={n.url} target="_blank" rel="noopener noreferrer">
+                            {n.title}
+                          </Content>
+                        </Card.Content>
+                      </Card>
+                    ))}  
+                  </List>
+                ) : <Content>No news yet.</Content>}
+              </Columns.Column><br/>
+              <Columns.Column size={1}></Columns.Column>
+              {/* PODCAST */}
+              <Columns.Column size="two-fifths">
+                <Heading renderAs="h2">Podcast - Inside the Labyrinth</Heading>
+                {additional_links.applePodcast && <Content renderAs="a" href={additional_links.applePodcast} target="_blank" rel="noopener noreferrer">
+                  <img src={applePodcastLogo} alt="apple podcast" width={300} className="podcast-btn" />
+                </Content>}
+                {additional_links.spotifyPodcast && <Content renderAs="a" href={additional_links.spotifyPodcast} target="_blank" rel="noopener noreferrer">
+                  <img src={spotifyPodcastLogo} alt="spotify podcast" width={300} className="podcast-btn" />
+                </Content>}                
+                {additional_links.anchorFmPodcast && <Content renderAs="a" href={additional_links.anchorFmPodcast} target="_blank" rel="noopener noreferrer">
+                  <img src={anchorFmPodcastLogo} alt="anchorfm podcast" width={300} className="podcast-btn" />
+                  <Heading subtitle size={6}>See all other available podcast links in Anchor.fm</Heading>
+                </Content>}                
+              </Columns.Column>
+            <Columns.Column></Columns.Column>
           </Columns>
         </Hero.Body>
       </Hero>
@@ -254,6 +298,9 @@ export const query = graphql`
     additional_links {
       paypal
       gofundme
+      anchorFmPodcast
+      applePodcast
+      spotifyPodcast
     }
     contact_links {
       instagram
@@ -281,12 +328,20 @@ export const query = graphql`
     }
   }
 
+  fragment businessNews on StrapiBusiness {
+    news {
+      title
+      url
+    }
+  }
+
   query ($strapiBusinessId: String) {
     strapiBusiness (id: {eq: $strapiBusinessId} ) {
       ...businessMeta
       ...businessUrls
       ...businessEvents
       ...galleryImages
+      ...businessNews
     }
   }
 `;

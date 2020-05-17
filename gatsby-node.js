@@ -25,6 +25,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     additional_links: AdditionalLinks
     events: [Event]
     gallery: [MediaObject]
+    news: [NewsObject]
   }
   type Event {
     name: String
@@ -50,10 +51,17 @@ exports.createSchemaCustomization = ({ actions }) => {
   type AdditionalLinks {
     paypal: String
     gofundme: String
+    anchorFmPodcast: String
+    applePodcast: String
+    spotifyPodcast: String
   }
   type MediaObject {
     name: String
     url: String
+  }
+  type NewsObject {
+    url: String
+    title: String
   }
 `
   createTypes(typeDefs)
