@@ -65,7 +65,7 @@ ul li::before {
 
 /* LINKS */
 a {
-  color: $blue-link;
+  color: $blue-link !important;
   &:active { color: $blue-link !important; }
   &:visited { color: $blue-link !important; }
   &:hover { color: $nypd-blue !important; }

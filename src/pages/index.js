@@ -222,7 +222,7 @@ const Index = ({ data }) => {
                       </Card>
                     ))}  
                   </List>
-                ) : <Content>No events posted at this time.</Content>}
+                ) : <Content>No events listed at this time.</Content>}
               </Columns.Column>
               {/* IMAGE GALLERY */}
               <Columns.Column size="two-fifths">
