@@ -22,13 +22,13 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-const Header = ({ title }) => (
+const Header = ({ title, caption }) => (
   <header>
     <HeaderLink to="/">
       <img src={logo} alt="logo" />
       <div className="col">
         <Heading renderAs="h1" size={4}>{title}</Heading>
-        <Heading renderAs="h2" subtitle size={6}>A commitment to First Responder health.</Heading>
+        {caption && <Heading renderAs="h2" subtitle size={6}>{caption}</Heading>}
       </div>
     </HeaderLink>
   </header>
@@ -36,6 +36,7 @@ const Header = ({ title }) => (
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  caption: PropTypes.string,
 };
 
 export default Header;

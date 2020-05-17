@@ -18,7 +18,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const typeDefs = `
   type StrapiBusiness implements Node {
     name: String
-    description: String
+    caption: String
     mission_statement: String
     business_hours: Week
     contact_links: ContactLinks

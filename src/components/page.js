@@ -4,12 +4,12 @@ import { StaticQuery, graphql } from 'gatsby';
 import { Head, Header } from '.';
 
 const Page = ({ data, children }) => {
-  const { name } = data.strapiBusiness;
+  const { name, caption } = data.strapiBusiness;
 
   return (
     <div>
       <Head />
-      <Header title={name} />
+      <Header title={name} caption={caption} />
       {children}
     </div>    
   );
@@ -26,6 +26,7 @@ const PageWithQuery = props => (
     query ($strapiBusinessId: String) {
       strapiBusiness (id: {eq: $strapiBusinessId} ) {
         name
+        caption
       }
     }
   `}

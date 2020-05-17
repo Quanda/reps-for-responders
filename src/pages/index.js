@@ -226,7 +226,7 @@ Index.propTypes = {
 export const query = graphql`
   fragment businessMeta on StrapiBusiness {
     name
-    description
+    caption
     mission_statement
     business_hours {
       Monday
