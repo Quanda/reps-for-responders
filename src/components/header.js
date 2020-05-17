@@ -4,26 +4,37 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Heading from 'react-bulma-components/lib/components/heading';
 import logo from '../../static/img/logo.png';
+import usaIcon from '../../static/img/usa.png';
 
 const HeaderLink = styled(Link)`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-transform: uppercase;
-  padding: 3rem 1.5rem;
+  padding: 3rem;
   width: 100%;
-  background-color: #ffffff;
-  border-bottom: 2px solid #ebebeb;
+  background-color: #102040;
+  border-bottom: 2px solid #b7b7b7;
 
   img {
     width: 75px;
     margin: 0 24px 0 0;
   }
+
+  .title {
+    color: #ffffff;
+  }
+  .subtitle {
+    color: #b7b7b7;
+  }
 `;
 
 const Header = ({ title, caption }) => (
   <header>
+    <div style={{ position: 'absolute', right: 8, top: 8 }}>
+      <img src={usaIcon} alt="responder icons" width={24} />
+    </div>
     <HeaderLink to="/">
       <img src={logo} alt="logo" />
       <div className="col">

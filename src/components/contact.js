@@ -46,7 +46,7 @@ class ContactForm extends React.Component {
           </Field>                    
           <Field>
             <Label>Message</Label>
-            <Textarea name="message" placeholder="How do you want to get involved?" onChange={this.onChange} value={message} />
+            <Textarea name="message" placeholder="Start a conversation and we will get back to you" onChange={this.onChange} value={message} />
           </Field>
           <Field kind="group">
             <Control>

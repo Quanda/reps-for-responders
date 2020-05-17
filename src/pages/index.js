@@ -33,11 +33,14 @@ const Index = ({ data }) => {
                   <Heading renderAs="h3" size={5}>WHO WE ARE</Heading>
                   <Content renderAs="ul">
                     <Content renderAs="li">
-                      <i>Reps for Responders</i> is a non-profit fitness gym in New City, NY founded by NYPD officer Frank Voce.
+                      <i>Reps for Responders</i> is a non-profit fitness gym in New City, NY founded by NYPD officer Frank Voce
                     </Content>
                     <Content renderAs="li">
-                      The RFR team continues to add caring & dedicated individuals who have experienced or witnessed the impact of trauma - and have a desire a help others.
+                      The RFR team consists of caring & dedicated individuals with extensive fitness backgrounds and experiences overcoming trauma
                     </Content>
+                  </Content>
+                  <Content className="row">
+                    <FontAwesomeIcon size="2x" icon={[ 'fas', 'users' ]} />
                   </Content>
                 </Card.Content>
               </Card>
@@ -48,14 +51,17 @@ const Index = ({ data }) => {
                   <Heading renderAs="h3" size={5}>WHAT WE DO</Heading>
                   <Content renderAs="ul">
                     <Content renderAs="li">
-                      Free gym membership to all first responders and military personnel.
+                      Free entry to all first responder and military personnel at our training gym
                     </Content>
                     <Content renderAs="li">
-                      Online fitness classes.
+                      Online fitness classes
                     </Content>
                     <Content renderAs="li">
-                      Virtual support groups.
+                      Virtual support groups
                     </Content>
+                  </Content>
+                  <Content className="row">
+                    <FontAwesomeIcon size="2x" icon={[ 'fas', 'dumbbell' ]} />
                   </Content>
                 </Card.Content>
               </Card>
@@ -66,13 +72,16 @@ const Index = ({ data }) => {
                   <Heading renderAs="h3" size={5}>HOW TO HELP</Heading>
                   <Content renderAs="ul">
                     <Content renderAs="li">
-                      Want to get involved or learn more?&nbsp;
-                      <Content renderAs="a" href="#contactus">Message us.</Content>
+                      Get involved - send us a&nbsp;
+                      <Content renderAs="a" href="#contactus">message</Content>
                     </Content>
                     <Content renderAs="li">
-                      Able to donate?&nbsp;
-                      <Content renderAs="a" href="#donate">See donation options.</Content>
+                      Support with a&nbsp;
+                      <Content renderAs="a" href="#donate">donation</Content>
                     </Content>
+                  </Content>
+                  <Content className="row">
+                    <FontAwesomeIcon size="2x" icon={[ 'fas', 'hands-helping' ]} />
                   </Content>
                 </Card.Content>
               </Card>
@@ -120,6 +129,7 @@ const Index = ({ data }) => {
       <Hero color="danger">
         <Hero.Body>
           <Columns style={{ width: '80%', margin: 'auto' }}>
+            <Columns.Column size={1}></Columns.Column>
             <Columns.Column size="one-third">
               <Heading renderAs="h3">OUR MISSION</Heading> 
             </Columns.Column>
@@ -180,19 +190,20 @@ const Index = ({ data }) => {
       </Hero>
   
       {/* DONATION */}
-      <Hero id="donate" size="medium">
+      <Hero id="donate" size="medium" color="primary">
         <Hero.Body>
           <Columns>
+            <Columns.Column size={1}></Columns.Column>
             <Columns.Column>
               <Heading renderAs="h2">HELP SUPPORT OUR FIRST RESPONDERS</Heading>
               <Heading renderAs="h3" subtitle>Your donations will help us to continue to provide for our First Responders by supporting our training facility and enabling future events.</Heading><br/>
             </Columns.Column>
             <Columns.Column>
               <Content className="col">
-                <Content renderAs="a" href={additional_links.paypal} target="_blank" rel="noopener noreferrer" className="donate">
+                <Content renderAs="a" href={additional_links.paypal} target="_blank" rel="noopener noreferrer" className="donate-btn">
                   <img src={paypalLogo} alt="paypal" width={150} />
                 </Content><br/>
-                <Content renderAs="a" href={additional_links.gofundme} target="_blank" rel="noopener noreferrer" className="donate">
+                <Content renderAs="a" href={additional_links.gofundme} target="_blank" rel="noopener noreferrer" className="donate-btn">
                   <img src={gofundmeLogo} alt="gofundme" width={150} />
                 </Content>      
               </Content>                       
