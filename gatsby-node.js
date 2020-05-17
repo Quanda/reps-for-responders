@@ -24,7 +24,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     contact_links: ContactLinks
     additional_links: AdditionalLinks
     events: [Event]
-    multimedia: [Multimedia]
+    gallery: [MediaObject]
   }
   type Event {
     name: String
@@ -51,7 +51,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     paypal: String
     gofundme: String
   }
-  type Multimedia {
+  type MediaObject {
     name: String
     url: String
   }
@@ -63,9 +63,9 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
   const { createNode } = actions
 
   if ( node.internal.type !== null && node.internal.type === 'StrapiBusiness') {
-    for ( const media of node.multimedia) {
+    for ( const obj of node.gallery) {
       const fileNode = await createRemoteFileNode({
-        url: process.env.API_URL + media.url,
+        url: process.env.API_URL + obj.url,
         store,
         cache,
         createNode,
@@ -73,7 +73,7 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
       })
   
       if (fileNode) {
-        media.localFile___NODE = fileNode.id;
+        obj.localFile___NODE = fileNode.id;
       } 
     }
   }

@@ -16,11 +16,9 @@ import gofundmeLogo from '../../static/img/gofundme.png';
 import paypalLogo from '../../static/img/paypal.png';
 
 const Index = ({ data }) => {
-  const { events, mission_statement, contact_links, additional_links, multimedia } = data.strapiBusiness;
+  const { events, mission_statement, contact_links, additional_links, gallery } = data.strapiBusiness;
   const { youtube, instagram, facebook, twitter } = contact_links;
-
-  // Filter images for the gallery items
-  const galleryImages = multimedia.filter(obj => obj.name.startsWith('gallery_')).map(img => img.localFile.url);
+  const galleryImages = gallery.map(img => img.localFile.url);
 
   return (
     <Page>
@@ -263,8 +261,8 @@ export const query = graphql`
     }
   }
 
-  fragment multimediaObjects on StrapiBusiness {
-    multimedia {
+  fragment galleryImages on StrapiBusiness {
+    gallery {
       name
       localFile {
         url
@@ -277,7 +275,7 @@ export const query = graphql`
       ...businessMeta
       ...businessUrls
       ...businessEvents
-      ...multimediaObjects
+      ...galleryImages
     }
   }
 `;
