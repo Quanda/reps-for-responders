@@ -17,6 +17,7 @@ import paypalLogo from '../../static/img/donate/paypal.png';
 import anchorFmPodcastLogo from '../../static/img/podcast/anchorfm.png';
 import spotifyPodcastLogo from '../../static/img/podcast/spotify.png';
 import applePodcastLogo from '../../static/img/podcast/apple.png';
+import minotaurLogo from '../../static/img/minotaur.jpeg';
 
 const Index = ({ data }) => {
   const { events, mission_statement, contact_links, additional_links, gallery, news } = data.strapiBusiness;
@@ -28,12 +29,11 @@ const Index = ({ data }) => {
       {/* ABOUT US */}
       <Hero color="white">
         <Hero.Body>
-          <Heading renderAs="h2" className="centered">ABOUT US</Heading>
           <Columns>
             <Columns.Column>
               <Card>
                 <Card.Content>
-                  <Heading renderAs="h3" size={5}>WHO WE ARE</Heading>
+                  <Heading renderAs="h3" size={4}>WHO WE ARE</Heading>
                   <Content renderAs="ul">
                     <Content renderAs="li">
                       <i>Reps for Responders</i> is a non-profit fitness gym in New City, NY founded by NYPD officer Frank Voce
@@ -43,7 +43,7 @@ const Index = ({ data }) => {
                     </Content>
                   </Content>
                   <Content className="row">
-                    <FontAwesomeIcon size="2x" icon={[ 'fas', 'users' ]} />
+                    <FontAwesomeIcon size="3x" icon={[ 'fas', 'users' ]} />
                   </Content>
                 </Card.Content>
               </Card>
@@ -51,7 +51,7 @@ const Index = ({ data }) => {
             <Columns.Column>
               <Card>
                 <Card.Content>
-                  <Heading renderAs="h3" size={5}>WHAT WE DO</Heading>
+                  <Heading renderAs="h3" size={4}>WHAT WE DO</Heading>
                   <Content renderAs="ul">
                     <Content renderAs="li">
                       Free entry to all first responder and military personnel at our training gym
@@ -64,7 +64,7 @@ const Index = ({ data }) => {
                     </Content>
                   </Content>
                   <Content className="row">
-                    <FontAwesomeIcon size="2x" icon={[ 'fas', 'dumbbell' ]} />
+                    <FontAwesomeIcon size="3x" icon={[ 'fas', 'dumbbell' ]} />
                   </Content>
                 </Card.Content>
               </Card>
@@ -72,7 +72,7 @@ const Index = ({ data }) => {
             <Columns.Column>
               <Card>
                 <Card.Content>
-                  <Heading renderAs="h3" size={5}>HOW TO HELP</Heading>
+                  <Heading renderAs="h3" size={4}>HOW TO HELP</Heading>
                   <Content renderAs="ul">
                     <Content renderAs="li">
                       Get involved - send us a&nbsp;
@@ -84,7 +84,7 @@ const Index = ({ data }) => {
                     </Content>
                   </Content>
                   <Content className="row">
-                    <FontAwesomeIcon size="2x" icon={[ 'fas', 'hands-helping' ]} />
+                    <FontAwesomeIcon size="3x" icon={[ 'fas', 'hands-helping' ]} />
                   </Content>
                 </Card.Content>
               </Card>
@@ -170,16 +170,22 @@ const Index = ({ data }) => {
         </Hero.Body>
       </Hero>
 
+      <Hero color="black">
+        <Hero.Body>
+          <img src={minotaurLogo} alt="minotaur" width={225} style={{ display: 'block', margin: 'auto', borderRadius: '100%' }} />
+        </Hero.Body>
+      </Hero>
+
       {/* MISSION STATEMENT */}
-      <Hero color="danger">
+      <Hero color="black">
         <Hero.Body>
           <Columns style={{ width: '80%', margin: 'auto' }}>
             <Columns.Column size={1}></Columns.Column>
             <Columns.Column size="one-third">
-              <Heading renderAs="h3">OUR MISSION</Heading> 
+              <Heading renderAs="h3">OUR MISSION</Heading>
             </Columns.Column>
             <Columns.Column>
-              <Content>{mission_statement.substring(0, 273)}...</Content><br/>
+              <Content size="medium">{mission_statement.substring(0, 273)}...</Content><br/>
               <Modal
                 button={{ color: 'white', text: 'Read the full Statement' }}
                 modal={{ closeOnBlur: true, showClose: true }}
@@ -196,7 +202,7 @@ const Index = ({ data }) => {
         </Hero.Body>
       </Hero>
 
-      <Hero color="white">
+      <Hero size="medium" color="white">
         <Hero.Body>
           <Columns>
             <Columns.Column></Columns.Column>
@@ -258,7 +264,7 @@ const Index = ({ data }) => {
       </Hero>   
       
       {/* CONTACT FORM */}
-      <Hero id="contactus" size="small" color="white">
+      <Hero id="contactus" size="medium" color="white">
         <Hero.Body>
           <Columns>
             <Columns.Column></Columns.Column>

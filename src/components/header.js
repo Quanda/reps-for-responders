@@ -13,7 +13,7 @@ const HeaderLink = styled(Link)`
   text-transform: uppercase;
   padding: 3rem;
   width: 100%;
-  background-color: #102040;
+  background-color: #181818;
   border-bottom: 2px solid #b7b7b7;
 
   img {
