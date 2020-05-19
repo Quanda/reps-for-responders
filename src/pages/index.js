@@ -36,7 +36,7 @@ const Index = ({ data }) => {
                   <Heading renderAs="h3" size={4}>WHO WE ARE</Heading>
                   <Content renderAs="ul">
                     <Content renderAs="li">
-                      <i>Reps for Responders</i> is a non-profit fitness gym in New City, NY founded by NYPD officer Frank Voce
+                      <i>Reps for Responders</i> is a non-profit fitness gym in New City, NY founded by NYPD officer Frank
                     </Content>
                     <Content renderAs="li">
                       The RFR team consists of caring & dedicated individuals with extensive fitness backgrounds and experiences overcoming trauma
@@ -97,9 +97,9 @@ const Index = ({ data }) => {
         <Hero.Body>
           <Columns>
             <Columns.Column></Columns.Column>
-              {/* IN THE NEWS */}
+              {/* IN THE MEDIA */}
               <Columns.Column size="two-fifths">
-                <Heading renderAs="h2">In the News</Heading>
+                <Heading renderAs="h2">In the Media</Heading>
                 {news && news.length > 0 ? (
                   <List>
                     {news.map((n, i) => (
