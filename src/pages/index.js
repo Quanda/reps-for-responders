@@ -116,19 +116,27 @@ const Index = ({ data }) => {
                 ) : <Content>No news yet.</Content>}
               </Columns.Column><br/>
               <Columns.Column size={1}></Columns.Column>
+
               {/* PODCAST */}
               <Columns.Column size="two-fifths">
                 <Heading renderAs="h2">Podcast - Inside the Labyrinth</Heading>
-                {additional_links.applePodcast && <Content renderAs="a" href={additional_links.applePodcast} target="_blank" rel="noopener noreferrer">
-                  <img src={applePodcastLogo} alt="apple podcast" width={300} className="podcast-btn" />
-                </Content>}
-                {additional_links.spotifyPodcast && <Content renderAs="a" href={additional_links.spotifyPodcast} target="_blank" rel="noopener noreferrer">
-                  <img src={spotifyPodcastLogo} alt="spotify podcast" width={300} className="podcast-btn" />
-                </Content>}                
-                {additional_links.anchorFmPodcast && <Content renderAs="a" href={additional_links.anchorFmPodcast} target="_blank" rel="noopener noreferrer">
-                  <img src={anchorFmPodcastLogo} alt="anchorfm podcast" width={300} className="podcast-btn" />
-                  <Heading subtitle size={6}>See all other available podcast links in Anchor.fm</Heading>
-                </Content>}                
+                <Card>
+                  <Card.Content>
+                    {additional_links.applePodcast && (
+                      <Content renderAs="a" href={additional_links.applePodcast} target="_blank" rel="noopener noreferrer">
+                        <img src={applePodcastLogo} alt="apple podcast" width={300} className="podcast-btn" />
+                      </Content>)}
+                    {additional_links.spotifyPodcast && (
+                      <Content renderAs="a" href={additional_links.spotifyPodcast} target="_blank" rel="noopener noreferrer">
+                        <img src={spotifyPodcastLogo} alt="spotify podcast" width={300} className="podcast-btn" />
+                      </Content>)}                
+                    {additional_links.anchorFmPodcast && (
+                      <Content renderAs="a" href={additional_links.anchorFmPodcast} target="_blank" rel="noopener noreferrer">
+                        <img src={anchorFmPodcastLogo} alt="anchorfm podcast" width={300} className="podcast-btn" />
+                      <Heading subtitle size={6}>See all other available podcast links in Anchor.fm</Heading>
+                    </Content>)} 
+                  </Card.Content>
+                </Card>              
               </Columns.Column>
             <Columns.Column></Columns.Column>
           </Columns>

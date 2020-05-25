@@ -17,7 +17,7 @@ const HeaderLink = styled(Link)`
   border-bottom: 2px solid #b7b7b7;
 
   img {
-    width: 75px;
+    width: 85px;
     margin: 0 24px 0 0;
   }
 

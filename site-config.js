@@ -2,9 +2,9 @@
 module.exports = {
   siteTitle: `Reps for Responders`,
   siteTitleShort: `Reps for Responders`,
-  siteDescription: ``,
+  siteDescription: `A commitment to First Responder health.`,
   siteUrl: `https://www.ericfurspan.com`,
-  themeColor: `#000`,
+  themeColor: `#181818`,
   backgroundColor: `#fff`,
   pathPrefix: null,
   iconPath: 'static/img/logo.png',
