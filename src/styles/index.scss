@@ -25,9 +25,12 @@ body {
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
   width: 100%;
+  align-items: center;
+
+  &.evenly {
+    justify-content: space-evenly;
+  }
 }
 
 .card, .button, .modal-content {
@@ -50,6 +53,9 @@ h1, h2, h3, h4, h5, h6 {
   .title, a {
     color: $nypd-yellow !important;
   }
+}
+.title svg {
+  margin-right: 12px;
 }
 
 /* LISTS */

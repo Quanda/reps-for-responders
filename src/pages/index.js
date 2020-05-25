@@ -42,7 +42,7 @@ const Index = ({ data }) => {
                       The RFR team consists of caring & dedicated individuals with extensive fitness backgrounds and experiences overcoming trauma
                     </Content>
                   </Content>
-                  <Content className="row">
+                  <Content className="row evenly">
                     <FontAwesomeIcon size="3x" icon={[ 'fas', 'users' ]} />
                   </Content>
                 </Card.Content>
@@ -63,7 +63,7 @@ const Index = ({ data }) => {
                       Virtual support groups
                     </Content>
                   </Content>
-                  <Content className="row">
+                  <Content className="row evenly">
                     <FontAwesomeIcon size="3x" icon={[ 'fas', 'dumbbell' ]} />
                   </Content>
                 </Card.Content>
@@ -83,7 +83,7 @@ const Index = ({ data }) => {
                       <Content renderAs="a" href="#donate">donation</Content>
                     </Content>
                   </Content>
-                  <Content className="row">
+                  <Content className="row evenly">
                     <FontAwesomeIcon size="3x" icon={[ 'fas', 'hands-helping' ]} />
                   </Content>
                 </Card.Content>
@@ -99,7 +99,10 @@ const Index = ({ data }) => {
             <Columns.Column></Columns.Column>
               {/* IN THE MEDIA */}
               <Columns.Column size="two-fifths">
-                <Heading renderAs="h2">In the Media</Heading>
+                <Heading renderAs="h2">
+                  <FontAwesomeIcon size="1x" icon={[ 'fas', 'newspaper' ]} />
+                  In the Media
+                </Heading>
                 {news && news.length > 0 ? (
                   <List>
                     {news.map((n, i) => (
@@ -119,7 +122,10 @@ const Index = ({ data }) => {
 
               {/* PODCAST */}
               <Columns.Column size="two-fifths">
-                <Heading renderAs="h2">Podcast - Inside the Labyrinth</Heading>
+                <Heading renderAs="h2">
+                  <FontAwesomeIcon size="1x" icon={[ 'fas', 'podcast' ]} />
+                  Podcast - Inside the Labyrinth
+                </Heading>
                 <Card>
                   <Card.Content>
                     {additional_links.applePodcast && (
@@ -216,7 +222,10 @@ const Index = ({ data }) => {
             <Columns.Column></Columns.Column>
               {/* EVENTS */}
               <Columns.Column size="two-fifths">
-                <Heading renderAs="h2">Events</Heading>
+                <Heading renderAs="h2">
+                  <FontAwesomeIcon size="1x" icon={[ 'fas', 'calendar-alt' ]} />
+                  Events
+                </Heading>
                 {events && events.length > 0 ? (
                   <List>
                     {events.map((e, i) => (
@@ -240,7 +249,10 @@ const Index = ({ data }) => {
               </Columns.Column>
               {/* IMAGE GALLERY */}
               <Columns.Column size="two-fifths">
-                <Heading renderAs="h2">Image Gallery</Heading>
+                <Heading renderAs="h2">
+                  <FontAwesomeIcon size="1x" icon={[ 'fas', 'images' ]} />
+                  Image Gallery
+                </Heading>
                 <Gallery images={galleryImages} />
               </Columns.Column>
             <Columns.Column></Columns.Column>
