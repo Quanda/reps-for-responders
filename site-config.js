@@ -3,7 +3,7 @@ module.exports = {
   siteTitle: `Reps for Responders`,
   siteTitleShort: `Reps for Responders`,
   siteDescription: `A commitment to First Responder health.`,
-  siteUrl: `https://repsforresponders.org/`,
+  siteUrl: `https://www.repsforresponders.org`,
   themeColor: `#181818`,
   backgroundColor: `#fff`,
   pathPrefix: null,
