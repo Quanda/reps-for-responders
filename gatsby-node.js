@@ -73,6 +73,7 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
 
   if ( node.internal.type !== null && node.internal.type === 'StrapiBusiness') {
     for ( const obj of node.gallery) {
+      console.log(obj);
       const fileNode = await createRemoteFileNode({
         url: process.env.API_URL + obj.url,
         store,

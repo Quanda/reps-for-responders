@@ -7,7 +7,7 @@
     "dev": "gatsby clean && gatsby develop",
     "build:dir": "mkdirp ./public/icons/",
     "build:favicons": "node scripts/favicons.js",
-    "build": "yarn build:dir && yarn build:favicons && gatsby build",
+    "build": "yarn clean && yarn build:dir && yarn build:favicons && gatsby build",
     "test": "ava **/*.test.js --verbose"
   },
   "greenkeeper": {
