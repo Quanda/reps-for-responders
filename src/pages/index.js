@@ -22,7 +22,6 @@ import minotaurLogo from '../../static/img/minotaur.jpeg';
 const Index = ({ data }) => {
   const { events, mission_statement, contact_links, additional_links, gallery, news } = data.strapiBusiness;
   const { youtube, instagram, facebook, twitter } = contact_links;
-  const galleryImages = gallery.map(img => img.localFile.url);
 
   return (
     <Page>
@@ -253,7 +252,7 @@ const Index = ({ data }) => {
                   <FontAwesomeIcon size="1x" icon={[ 'fas', 'images' ]} />
                   Image Gallery
                 </Heading>
-                <Gallery images={galleryImages} />
+                <Gallery images={gallery.map(img => img.localFile.childImageSharp.fluid.src)} />
               </Columns.Column>
             <Columns.Column></Columns.Column>
           </Columns>
@@ -350,7 +349,11 @@ export const query = graphql`
     gallery {
       name
       localFile {
-        url
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
   }

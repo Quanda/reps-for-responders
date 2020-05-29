@@ -57,7 +57,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
   type MediaObject {
     name: String
-    url: String
+    localFile: File
   }
   type NewsObject {
     source: String
@@ -68,23 +68,25 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs)
 }
 
-exports.onCreateNode = async ({ node, actions, store, cache }) => {
-  const { createNode } = actions
+exports.onCreateNode = async ({ actions: { createNode }, node, store, cache }) => {
+  if (node.internal.type === 'StrapiBusiness') {  
+    for (const img of node.gallery) {
+      try {
+        const fileNode = await createRemoteFileNode({
+          url: process.env.API_URL + img.url,
+          store,
+          cache,
+          createNode,
+          createNodeId: id => id
+        });
 
-  if ( node.internal.type !== null && node.internal.type === 'StrapiBusiness') {
-    for ( const obj of node.gallery) {
-      const fileNode = await createRemoteFileNode({
-        url: process.env.API_URL + obj.url,
-        store,
-        cache,
-        createNode,
-        createNodeId: id => id
-      })
-  
-      if (fileNode) {
-        obj.localFile___NODE = fileNode.id;
-      } 
-    }
+        if (fileNode) {
+          img.localFile___NODE = fileNode.id;
+        } 
+      } catch(e) {
+        console.log('ERROR in createRemoteFileNode of onCreateNode in gatsby-node.js', e);
+      }
+    }  
   }
 }
 
