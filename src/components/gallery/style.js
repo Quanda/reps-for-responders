@@ -8,6 +8,7 @@ export const Container = styled.div`
   overflow: hidden;
   padding: 0;
   margin: 0;
+  height: 420px;
 
   .img-wrapper {
     position: relative;
@@ -24,6 +25,7 @@ export const Container = styled.div`
   .prev {
     position: absolute;
     background: transparent;
+    color: var(--nypd-blue-dark);
     border: 0;
     top: calc(50% - 20px);
     width: 42px;

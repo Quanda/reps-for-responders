@@ -192,22 +192,22 @@ const Index = ({ data }) => {
               <Heading style={{ textAlign: 'center' }} renderAs="h2" size={4}>CONNECT WITH US</Heading><br/>
                 <Content className="row evenly">
                   {youtube && (
-                    <Media.Item style={{ textAlign: 'center' }}>
+                    <Media.Item style={{ textAlign: 'center' }}renderAs="a" target="_blank" href={youtube}>
                       <img src={youtubeLogo} alt="youtube" width={75} className="social-btn" />
                     </Media.Item>
                   )}
                   {instagram && (
-                    <Media.Item style={{ textAlign: 'center' }}>
+                    <Media.Item style={{ textAlign: 'center' }} renderAs="a" target="_blank" href={instagram}>
                       <img src={instagramLogo} alt="instagram" width={75} className="social-btn" />
                     </Media.Item>
                   )}
                   {facebook && (
-                    <Media.Item style={{ textAlign: 'center' }}>
+                    <Media.Item style={{ textAlign: 'center' }} renderAs="a" target="_blank" href={facebook}>
                       <img src={facebookLogo} alt="facebook" width={75} className="social-btn" />
                     </Media.Item>
                   )}
                   {twitter && (
-                    <Media.Item style={{ textAlign: 'center' }}>
+                    <Media.Item style={{ textAlign: 'center' }} renderAs="a" target="_blank" href={twitter}>
                       <img src={twitterLogo} alt="twitter" width={75} className="social-btn" />
                     </Media.Item>
                   )}        
@@ -255,7 +255,7 @@ const Index = ({ data }) => {
                   <FontAwesomeIcon size="1x" icon={[ 'fas', 'images' ]} />
                   Image Gallery
                 </Heading>
-                <Gallery images={gallery.map(img => img.localFile.childImageSharp.fluid.src)} />
+                <Gallery images={gallery.map(img => img.localFile.childImageSharp.fixed.src)} />
               </Columns.Column>
             <Columns.Column></Columns.Column>
           </Columns>
@@ -353,8 +353,8 @@ export const query = graphql`
       name
       localFile {
         childImageSharp {
-          fluid(quality: 100) {
-            ...GatsbyImageSharpFluid
+          fixed(height: 400, quality: 100) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
