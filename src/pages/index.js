@@ -6,7 +6,6 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import Content from 'react-bulma-components/lib/components/content';
 import Card from 'react-bulma-components/lib/components/card';
 import Media from 'react-bulma-components/lib/components/media';
-import Level from 'react-bulma-components/lib/components/level';
 import Hero from 'react-bulma-components/lib/components/hero';
 import List from 'react-bulma-components/lib/components/list';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,6 +17,10 @@ import anchorFmPodcastLogo from '../../static/img/podcast/anchorfm.png';
 import spotifyPodcastLogo from '../../static/img/podcast/spotify.png';
 import applePodcastLogo from '../../static/img/podcast/apple.png';
 import minotaurLogo from '../../static/img/minotaur.jpeg';
+import facebookLogo from '../../static/img/social/facebook.png';
+import twitterLogo from '../../static/img/social/twitter.png';
+import instagramLogo from '../../static/img/social/instagram.png';
+import youtubeLogo from '../../static/img/social/youtube.svg';
 
 const Index = ({ data }) => {
   const { events, mission_statement, contact_links, additional_links, gallery, news } = data.strapiBusiness;
@@ -26,7 +29,7 @@ const Index = ({ data }) => {
   return (
     <Page>
       {/* ABOUT US */}
-      <Hero color="white">
+      <Hero>
         <Hero.Body>
           <Columns>
             <Columns.Column>
@@ -35,7 +38,7 @@ const Index = ({ data }) => {
                   <Heading renderAs="h3" size={4}>WHO WE ARE</Heading>
                   <Content renderAs="ul">
                     <Content renderAs="li">
-                      <i>Reps for Responders</i> is a non-profit fitness gym in New City, NY founded by NYPD officer Frank
+                      <i>Reps for Responders</i> is a non-profit fitness gym in Rockland County, NY
                     </Content>
                     <Content renderAs="li">
                       The RFR team consists of caring & dedicated individuals with extensive fitness backgrounds and experiences overcoming trauma
@@ -92,7 +95,7 @@ const Index = ({ data }) => {
         </Hero.Body>
       </Hero>
 
-      <Hero color="white">
+      <Hero>
         <Hero.Body>
           <Columns>
             <Columns.Column></Columns.Column>
@@ -141,56 +144,21 @@ const Index = ({ data }) => {
                       <Heading subtitle size={6}>See all other available podcast links in Anchor.fm</Heading>
                     </Content>)} 
                   </Card.Content>
-                </Card>              
+                </Card>          
               </Columns.Column>
             <Columns.Column></Columns.Column>
           </Columns>
         </Hero.Body>
       </Hero>
 
-      {/* SOCIAL MEDIA */}
-      <Hero size="medium" color="white">
-        <Hero.Body>
-          <Columns>
-            <Columns.Column></Columns.Column>
-            <Columns.Column size="half">
-              <Heading style={{ textAlign: 'center' }} renderAs="h2" size={4}>CONNECT WITH US</Heading><br/>
-              <Level>
-                {youtube && <Level.Item>
-                  <Content renderAs="a" target="_blank" href={youtube}>
-                    <FontAwesomeIcon size="4x" icon={[ 'fab', 'youtube' ]} />
-                  </Content>
-                </Level.Item>}
-                {instagram && <Level.Item>
-                  <Content renderAs="a" target="_blank" href={instagram}>
-                    <FontAwesomeIcon size="4x" icon={[ 'fab', 'instagram' ]} />
-                  </Content>
-                </Level.Item>}
-                {facebook && <Level.Item>
-                  <Content renderAs="a" target="_blank" href={facebook}>
-                    <FontAwesomeIcon size="4x" icon={[ 'fab', 'facebook' ]} />
-                  </Content>
-                </Level.Item>}
-                {twitter && <Level.Item>
-                  <Content renderAs="a" target="_blank" href={twitter}>
-                    <FontAwesomeIcon size="4x" icon={[ 'fab', 'twitter' ]} />
-                  </Content>
-                </Level.Item>}
-              </Level>
-            </Columns.Column>
-            <Columns.Column></Columns.Column>
-          </Columns>        
-        </Hero.Body>
-      </Hero>
-
-      <Hero color="black">
+      <Hero size="small" color="black">
         <Hero.Body>
           <img src={minotaurLogo} alt="minotaur" width={225} style={{ display: 'block', margin: 'auto', borderRadius: '100%' }} />
         </Hero.Body>
       </Hero>
 
       {/* MISSION STATEMENT */}
-      <Hero color="black">
+      <Hero size="small" color="black">
         <Hero.Body>
           <Columns style={{ width: '80%', margin: 'auto' }}>
             <Columns.Column size={1}></Columns.Column>
@@ -215,7 +183,42 @@ const Index = ({ data }) => {
         </Hero.Body>
       </Hero>
 
-      <Hero size="medium" color="white">
+      {/* SOCIAL MEDIA */}
+      <Hero size="medium">
+        <Hero.Body>
+          <Columns>
+            <Columns.Column></Columns.Column>
+            <Columns.Column size="half">
+              <Heading style={{ textAlign: 'center' }} renderAs="h2" size={4}>CONNECT WITH US</Heading><br/>
+                <Content className="row evenly">
+                  {youtube && (
+                    <Media.Item style={{ textAlign: 'center' }}>
+                      <img src={youtubeLogo} alt="youtube" width={75} className="social-btn" />
+                    </Media.Item>
+                  )}
+                  {instagram && (
+                    <Media.Item style={{ textAlign: 'center' }}>
+                      <img src={instagramLogo} alt="instagram" width={75} className="social-btn" />
+                    </Media.Item>
+                  )}
+                  {facebook && (
+                    <Media.Item style={{ textAlign: 'center' }}>
+                      <img src={facebookLogo} alt="facebook" width={75} className="social-btn" />
+                    </Media.Item>
+                  )}
+                  {twitter && (
+                    <Media.Item style={{ textAlign: 'center' }}>
+                      <img src={twitterLogo} alt="twitter" width={75} className="social-btn" />
+                    </Media.Item>
+                  )}        
+                </Content>
+              </Columns.Column>
+            <Columns.Column></Columns.Column>
+          </Columns>        
+        </Hero.Body>
+      </Hero>
+
+      <Hero size="small">
         <Hero.Body>
           <Columns>
             <Columns.Column></Columns.Column>
@@ -283,7 +286,7 @@ const Index = ({ data }) => {
       </Hero>   
       
       {/* CONTACT FORM */}
-      <Hero id="contactus" size="medium" color="white">
+      <Hero id="contactus" size="medium">
         <Hero.Body>
           <Columns>
             <Columns.Column></Columns.Column>
