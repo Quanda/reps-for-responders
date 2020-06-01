@@ -255,7 +255,13 @@ const Index = ({ data }) => {
                   <FontAwesomeIcon size="1x" icon={[ 'fas', 'images' ]} />
                   Image Gallery
                 </Heading>
-                <Gallery images={gallery.map(img => img.localFile.childImageSharp.fixed.src)} />
+                <Heading subtitle size={6}>Swipe through images, or click to view expanded</Heading>
+                <Gallery
+                  images={{
+                    fixed: gallery.map(img => img.localFile.childImageSharp.fixed.src),
+                    fluid: gallery.map(img => img.localFile.childImageSharp.fluid.src)
+                  }}
+                />
               </Columns.Column>
             <Columns.Column></Columns.Column>
           </Columns>
@@ -355,6 +361,9 @@ export const query = graphql`
         childImageSharp {
           fixed(height: 400, quality: 100) {
             ...GatsbyImageSharpFixed
+          }
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
           }
         }
       }

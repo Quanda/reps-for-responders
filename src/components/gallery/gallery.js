@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from '@popmotion/popcorn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Lightbox from 'react-image-lightbox';
 import { Container } from './style';
+import 'react-image-lightbox/style.css';
 
 const variants = {
   enter: (direction) => ({
@@ -26,10 +28,13 @@ const variants = {
 
 const Gallery = ({ images }) => {
   const [[page, direction], setPage] = useState([0, 0]);
-  const imageIndex = wrap(0, images.length, page);
+  const imageIndex = wrap(0, images.fixed.length, page);
   const paginate = (newDirection) => {
     setPage([page + newDirection, newDirection]);
   };
+
+  // lightbox
+  const [isLightboxOpen, toggleLightboxOpen] = useState(false);
 
   return (
     <Container>
@@ -37,7 +42,7 @@ const Gallery = ({ images }) => {
         <div className="img-wrapper">
           <motion.img
             key={page}
-            src={images[imageIndex]}
+            src={images.fixed[imageIndex]}
             custom={direction}
             variants={variants}
             initial="enter"
@@ -59,11 +64,23 @@ const Gallery = ({ images }) => {
                 paginate(-1);
               }
             }}
+            onClick={() => toggleLightboxOpen(true)}
           />
         </div>
       </AnimatePresence>
       <FontAwesomeIcon size="1x" icon={[ 'fas', 'caret-right' ]} className="next" onClick={() => paginate(1)} />
       <FontAwesomeIcon size="1x" icon={[ 'fas', 'caret-left' ]} className="prev" onClick={() => paginate(-1)} />
+
+      {isLightboxOpen && (
+          <Lightbox
+            mainSrc={images.fluid[imageIndex]}
+            nextSrc={images.fluid[(imageIndex + 1) % images.fluid.length]}
+            prevSrc={images.fluid[(imageIndex + images.fluid.length - 1) % images.fluid.length]}
+            onCloseRequest={() => toggleLightboxOpen(false)}
+            onMovePrevRequest={() => paginate(-1)}
+            onMoveNextRequest={() => paginate(1)}
+          />
+        )}
     </Container>
   );
 };
@@ -80,7 +97,10 @@ const swipePower = (offset, velocity) => {
 };
 
 Gallery.propTypes = {
-  images: PropTypes.array
+  images: PropTypes.shape({
+    fixed: PropTypes.array,
+    fluid: PropTypes.array,
+  })
 };
 
 export default Gallery;
