@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from '@popmotion/popcorn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from './style';
 
 const variants = {
@@ -59,14 +60,10 @@ const Gallery = ({ images }) => {
               }
             }}
           />
-      </div>
+        </div>
       </AnimatePresence>
-      <button type="button" className="next" onClick={() => paginate(1)}>
-        {'►'}
-      </button>
-      <button className="prev" onClick={() => paginate(-1)}>
-        {'►'}
-      </button>
+      <FontAwesomeIcon size="1x" icon={[ 'fas', 'caret-right' ]} className="next" onClick={() => paginate(1)} />
+      <FontAwesomeIcon size="1x" icon={[ 'fas', 'caret-left' ]} className="prev" onClick={() => paginate(-1)} />
     </Container>
   );
 };

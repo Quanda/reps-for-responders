@@ -17,20 +17,13 @@ export const Container = styled.div`
   }
   
   img {
-    border-radius: 6px;
-  }
-
-  &:hover {
-    .next, .prev {
-      color: #FFFFFF;
-    }
+    border-radius: 4px;
   }
 
   .next,
   .prev {
     position: absolute;
     background: transparent;
-    color: transparent;
     border: 0;
     top: calc(50% - 20px);
     width: 42px;
@@ -50,6 +43,5 @@ export const Container = styled.div`
   
   .prev {
     left: 0;
-    transform: scale(-1);
   }
 `;
