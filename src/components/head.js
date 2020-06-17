@@ -137,7 +137,10 @@ const Head = ({
       sizes="16x16"
       type="image/png"
     />
-    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto|Roboto+Slab&display=swap" rel="stylesheet"></link>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato|Roboto|Roboto+Slab&display=swap"
+      rel="stylesheet"
+    ></link>
     <script type="application/ld+json">
       {JSON.stringify(
         schemaGenerator({
@@ -167,7 +170,7 @@ Head.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-const HeadWithQuery = props => (
+const HeadWithQuery = (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -182,7 +185,7 @@ const HeadWithQuery = props => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <Location>
         {({ location }) => (
           <Head {...data.site.siteMetadata} {...props} location={location} />

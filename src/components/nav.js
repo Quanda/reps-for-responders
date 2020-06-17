@@ -6,7 +6,7 @@ const Nav = () => (
     <Navbar.Brand>
       <Navbar.Burger />
     </Navbar.Brand>
-    <Navbar.Menu >
+    <Navbar.Menu>
       <Navbar.Container position="end">
         {/*
           <Navbar.Item href='/about'>
@@ -18,7 +18,7 @@ const Nav = () => (
           <Navbar.Item href="/donate">
             Donate
           </Navbar.Item>
-        */}                                            
+        */}
       </Navbar.Container>
     </Navbar.Menu>
   </Navbar>

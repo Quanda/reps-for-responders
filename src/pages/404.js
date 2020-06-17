@@ -9,7 +9,7 @@ const NotFound = () => (
     <Hero size="large" color="white" style={{ textAlign: 'center' }}>
       <Hero.Body>
         <Heading renderAs="h2">Sorry, this page was not found.</Heading>
-        <Link to="/">Back to the homepage</Link>                     
+        <Link to="/">Back to the homepage</Link>
       </Hero.Body>
     </Hero>
   </Page>

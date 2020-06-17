@@ -8,15 +8,15 @@ class OpenModal extends React.Component {
     modal: PropTypes.object,
     children: PropTypes.node.isRequired,
     button: PropTypes.object,
-  }
+  };
 
   static defaultProps = {
     modal: {},
-  }
+  };
 
   state = {
     show: false,
-  }
+  };
 
   open = () => this.setState({ show: true });
   close = () => this.setState({ show: false });
@@ -26,11 +26,15 @@ class OpenModal extends React.Component {
 
     return (
       <div>
-        <Button outlined color={button.color || 'w'} onClick={this.open}>{button.text || 'Open'}</Button>
-        <Modal show={this.state.show} onClose={this.close} {...this.props.modal}>
-          <Modal.Content>
-            {children}
-          </Modal.Content>
+        <Button outlined color={button.color || 'w'} onClick={this.open}>
+          {button.text || 'Open'}
+        </Button>
+        <Modal
+          show={this.state.show}
+          onClose={this.close}
+          {...this.props.modal}
+        >
+          <Modal.Content>{children}</Modal.Content>
         </Modal>
       </div>
     );
@@ -38,4 +42,3 @@ class OpenModal extends React.Component {
 }
 
 export default OpenModal;
-

@@ -16,7 +16,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
   }
-  
+
   img {
     border-radius: 4px;
   }
@@ -42,7 +42,7 @@ export const Container = styled.div`
   .next {
     right: 0;
   }
-  
+
   .prev {
     left: 0;
   }

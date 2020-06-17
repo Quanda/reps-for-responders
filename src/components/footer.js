@@ -19,31 +19,39 @@ const SocialMediaFooter = ({ urls }) => {
             <Level renderAs="nav">
               <Level.Item>
                 <img src={usaIcon} alt="usa flag" width={50} />
-                <Heading renderAs="a" target="_blank" href={`mailto:${email}`} subtitle size={6}>{urls.email}</Heading>        
+                <Heading
+                  renderAs="a"
+                  target="_blank"
+                  href={`mailto:${email}`}
+                  subtitle
+                  size={6}
+                >
+                  {urls.email}
+                </Heading>
               </Level.Item>
               <Level.Item>
                 {youtube && (
                   <a href={youtube}>
-                    <FontAwesomeIcon size="1x" icon={[ 'fab', 'youtube' ]} />
+                    <FontAwesomeIcon size="1x" icon={['fab', 'youtube']} />
                   </a>
                 )}
                 {instagram && (
-                <a href={instagram}>
-                  <FontAwesomeIcon size="1x" icon={[ 'fab', 'instagram' ]} />
-                </a>
+                  <a href={instagram}>
+                    <FontAwesomeIcon size="1x" icon={['fab', 'instagram']} />
+                  </a>
                 )}
                 {facebook && (
-                <a href={facebook}>
-                  <FontAwesomeIcon size="1x" icon={[ 'fab', 'facebook' ]} />
-                </a>
+                  <a href={facebook}>
+                    <FontAwesomeIcon size="1x" icon={['fab', 'facebook']} />
+                  </a>
                 )}
                 {twitter && (
-                <a href={twitter}>
-                  <FontAwesomeIcon size="1x" icon={[ 'fab', 'twitter' ]} />
-                </a>
+                  <a href={twitter}>
+                    <FontAwesomeIcon size="1x" icon={['fab', 'twitter']} />
+                  </a>
                 )}
               </Level.Item>
-            </Level>             
+            </Level>
           </Container>
         </Footer>
       </Hero.Footer>
@@ -52,8 +60,7 @@ const SocialMediaFooter = ({ urls }) => {
 };
 
 SocialMediaFooter.propTypes = {
-  urls: PropTypes.object
-}
+  urls: PropTypes.object,
+};
 
 export default SocialMediaFooter;
-

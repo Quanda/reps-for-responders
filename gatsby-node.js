@@ -9,8 +9,8 @@ exports.onCreatePage = ({ page, actions }) => {
       ...page.context,
       strapiBusinessId: process.env.STRAPI_BUSINESS_ID,
     },
-  })
-}
+  });
+};
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
@@ -26,6 +26,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     events: [Event]
     gallery: [MediaObject]
     news: [NewsObject]
+    employees: [Employee]
   }
   type Event {
     name: String
@@ -64,12 +65,24 @@ exports.createSchemaCustomization = ({ actions }) => {
     url: String
     title: String
   }
-`
-  createTypes(typeDefs)
-}
+  type Employee {
+    name: String
+    bio: String
+    phone: String
+    email: String
+    picture: File
+  }
+`;
+  createTypes(typeDefs);
+};
 
-exports.onCreateNode = async ({ actions: { createNode }, node, store, cache }) => {
-  if (node.internal.type === 'StrapiBusiness') {  
+exports.onCreateNode = async ({
+  actions: { createNode },
+  node,
+  store,
+  cache,
+}) => {
+  if (node.internal.type === 'StrapiBusiness') {
     for (const img of node.gallery) {
       try {
         const fileNode = await createRemoteFileNode({
@@ -77,26 +90,31 @@ exports.onCreateNode = async ({ actions: { createNode }, node, store, cache }) =
           store,
           cache,
           createNode,
-          createNodeId: id => id
+          createNodeId: (id) => id,
         });
 
         if (fileNode) {
           img.localFile___NODE = fileNode.id;
-        } 
-      } catch(e) {
-        console.log('ERROR in createRemoteFileNode of onCreateNode in gatsby-node.js', e);
+        }
+      } catch (e) {
+        console.log(
+          'ERROR in createRemoteFileNode of onCreateNode in gatsby-node.js',
+          e
+        );
       }
-    }  
+    }
   }
-}
+};
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-      plugins: [new DirectoryNamedWebpackPlugin({
-        exclude: /node_modules/
-      })],
+      plugins: [
+        new DirectoryNamedWebpackPlugin({
+          exclude: /node_modules/,
+        }),
+      ],
     },
   });
 };

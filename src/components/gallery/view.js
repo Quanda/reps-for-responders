@@ -10,20 +10,20 @@ import 'react-image-lightbox/style.css';
 const variants = {
   enter: (direction) => ({
     x: direction > 0 ? 1000 : -1000,
-    opacity: 0
+    opacity: 0,
   }),
   center: {
     zIndex: 1,
     x: 0,
-    opacity: 1
+    opacity: 1,
   },
   exit: (direction) => {
     return {
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
-      opacity: 0
+      opacity: 0,
     };
-  }
+  },
 };
 
 const Gallery = ({ images }) => {
@@ -50,7 +50,7 @@ const Gallery = ({ images }) => {
             exit="exit"
             transition={{
               x: { type: 'spring', stiffness: 300, damping: 200 },
-              opacity: { duration: 1 }
+              opacity: { duration: 1 },
             }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
@@ -68,19 +68,33 @@ const Gallery = ({ images }) => {
           />
         </div>
       </AnimatePresence>
-      <FontAwesomeIcon size="1x" icon={[ 'fas', 'caret-right' ]} className="next" onClick={() => paginate(1)} />
-      <FontAwesomeIcon size="1x" icon={[ 'fas', 'caret-left' ]} className="prev" onClick={() => paginate(-1)} />
+      <FontAwesomeIcon
+        size="1x"
+        icon={['fas', 'caret-right']}
+        className="next"
+        onClick={() => paginate(1)}
+      />
+      <FontAwesomeIcon
+        size="1x"
+        icon={['fas', 'caret-left']}
+        className="prev"
+        onClick={() => paginate(-1)}
+      />
 
       {isLightboxOpen && (
-          <Lightbox
-            mainSrc={images.fluid[imageIndex]}
-            nextSrc={images.fluid[(imageIndex + 1) % images.fluid.length]}
-            prevSrc={images.fluid[(imageIndex + images.fluid.length - 1) % images.fluid.length]}
-            onCloseRequest={() => toggleLightboxOpen(false)}
-            onMovePrevRequest={() => paginate(-1)}
-            onMoveNextRequest={() => paginate(1)}
-          />
-        )}
+        <Lightbox
+          mainSrc={images.fluid[imageIndex]}
+          nextSrc={images.fluid[(imageIndex + 1) % images.fluid.length]}
+          prevSrc={
+            images.fluid[
+              (imageIndex + images.fluid.length - 1) % images.fluid.length
+            ]
+          }
+          onCloseRequest={() => toggleLightboxOpen(false)}
+          onMovePrevRequest={() => paginate(-1)}
+          onMoveNextRequest={() => paginate(1)}
+        />
+      )}
     </Container>
   );
 };
@@ -100,7 +114,7 @@ Gallery.propTypes = {
   images: PropTypes.shape({
     fixed: PropTypes.array,
     fluid: PropTypes.array,
-  })
+  }),
 };
 
 export default Gallery;

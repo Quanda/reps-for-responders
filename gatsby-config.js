@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
-require('dotenv').config({  
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 const siteConfig = require('./site-config');
 
@@ -22,7 +22,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        includePaths: ["./src/styles"],
+        includePaths: ['./src/styles'],
       },
     },
     {
@@ -36,7 +36,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: process.env.API_URL || "http://localhost:1337",
+        apiURL: process.env.API_URL || 'http://localhost:1337',
         queryLimit: 1,
         contentTypes: [`business`],
       },

@@ -34,8 +34,14 @@ const Header = ({ title, caption }) => (
     <HeaderLink to="/">
       <img src={logo} alt="logo" />
       <div className="col">
-        <Heading renderAs="h1" size={4}>{title}</Heading>
-        {caption && <Heading renderAs="h2" subtitle size={6}>{caption}</Heading>}
+        <Heading renderAs="h1" size={4}>
+          {title}
+        </Heading>
+        {caption && (
+          <Heading renderAs="h2" subtitle size={6}>
+            {caption}
+          </Heading>
+        )}
       </div>
     </HeaderLink>
   </header>

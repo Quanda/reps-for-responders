@@ -7,7 +7,8 @@
     "build:dir": "mkdirp ./public/icons/",
     "build:favicons": "node scripts/favicons.js",
     "build": "yarn build:dir && yarn build:favicons && gatsby build",
-    "test": "ava **/*.test.js --verbose"
+    "test": "ava **/*.test.js --verbose",
+    "prettier": "prettier --write ."
   },
   "greenkeeper": {
     "ignore": [
@@ -61,12 +62,16 @@
     "chrome-launcher": "^0.10.5",
     "core-js": "^2.6.2",
     "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-loader": "^2.1.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.12.4",
     "lighthouse": "^4.0.0",
     "mkdirp": "^0.5.1",
-    "node-gyp": "^3.8.0"
+    "node-gyp": "^3.8.0",
+    "prettier": "^2.0.5"
   }
 }

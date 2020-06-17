@@ -11,7 +11,7 @@ const Page = ({ data, children }) => {
       <Head />
       <Header title={name} caption={caption} />
       {children}
-    </div>    
+    </div>
   );
 };
 
@@ -20,17 +20,17 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const PageWithQuery = props => (
+const PageWithQuery = (props) => (
   <StaticQuery
     query={graphql`
-    query ($strapiBusinessId: String) {
-      strapiBusiness (id: {eq: $strapiBusinessId} ) {
-        name
-        caption
+      query($strapiBusinessId: String) {
+        strapiBusiness(id: { eq: $strapiBusinessId }) {
+          name
+          caption
+        }
       }
-    }
-  `}
-    render={data => <Page data={data} {...props} />}
+    `}
+    render={(data) => <Page data={data} {...props} />}
   />
 );
 
