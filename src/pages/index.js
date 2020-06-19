@@ -10,18 +10,8 @@ import Hero from 'react-bulma-components/lib/components/hero';
 import List from 'react-bulma-components/lib/components/list';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons';
-import { Page, ContactForm, Modal, Gallery, Footer } from '../components';
-import gofundmeLogo from '../../static/img/donate/gofundme.png';
-import paypalLogo from '../../static/img/donate/paypal.png';
-import anchorFmPodcastLogo from '../../static/img/podcast/anchorfm.png';
-import spotifyPodcastLogo from '../../static/img/podcast/spotify.png';
-import applePodcastLogo from '../../static/img/podcast/apple.png';
-import minotaurLogo from '../../static/img/minotaur.jpeg';
-import facebookLogo from '../../static/img/social/facebook.png';
-import twitterLogo from '../../static/img/social/twitter.png';
-import instagramLogo from '../../static/img/social/instagram.png';
-import youtubeLogo from '../../static/img/social/youtube.svg';
-import Avatar from '../components/avatar';
+import { ContactForm, Modal, Avatar, Gallery, Footer } from '../components';
+import * as images from '../../static/img';
 
 const Index = ({ data }) => {
   const {
@@ -31,11 +21,12 @@ const Index = ({ data }) => {
     additional_links,
     gallery,
     news,
+    employees,
   } = data.strapiBusiness;
   const { youtube, instagram, facebook, twitter } = contact_links;
 
   return (
-    <Page>
+    <>
       {/* ABOUT US */}
       <Hero>
         <Hero.Body>
@@ -119,7 +110,7 @@ const Index = ({ data }) => {
       <Hero>
         <Hero.Body>
           <Columns>
-            <Columns.Column></Columns.Column>
+            <Columns.Column />
             {/* IN THE MEDIA */}
             <Columns.Column size="two-fifths">
               <Heading renderAs="h2">
@@ -128,8 +119,8 @@ const Index = ({ data }) => {
               </Heading>
               {news && news.length > 0 ? (
                 <List>
-                  {news.map((n, i) => (
-                    <Card key={i}>
+                  {news.map((n) => (
+                    <Card key={n.url}>
                       <Card.Content>
                         <Heading renderAs="h6" size={6}>
                           {n.source}
@@ -151,7 +142,7 @@ const Index = ({ data }) => {
               )}
             </Columns.Column>
             <br />
-            <Columns.Column size={1}></Columns.Column>
+            <Columns.Column size={1} />
 
             {/* PODCAST */}
             <Columns.Column size="two-fifths">
@@ -169,7 +160,7 @@ const Index = ({ data }) => {
                       rel="noopener noreferrer"
                     >
                       <img
-                        src={applePodcastLogo}
+                        src={images.apple}
                         alt="apple podcast"
                         width={300}
                         className="podcast-btn"
@@ -184,7 +175,7 @@ const Index = ({ data }) => {
                       rel="noopener noreferrer"
                     >
                       <img
-                        src={spotifyPodcastLogo}
+                        src={images.spotify}
                         alt="spotify podcast"
                         width={300}
                         className="podcast-btn"
@@ -199,7 +190,7 @@ const Index = ({ data }) => {
                       rel="noopener noreferrer"
                     >
                       <img
-                        src={anchorFmPodcastLogo}
+                        src={images.anchorfm}
                         alt="anchorfm podcast"
                         width={300}
                         className="podcast-btn"
@@ -212,7 +203,32 @@ const Index = ({ data }) => {
                 </Card.Content>
               </Card>
             </Columns.Column>
-            <Columns.Column></Columns.Column>
+            <Columns.Column />
+          </Columns>
+        </Hero.Body>
+      </Hero>
+
+      {/* MEET THE TEAM */}
+      <Hero>
+        <Hero.Body>
+          <br />
+          <Heading className="text-center" renderAs="h3">
+            MEET OUR TEAM
+          </Heading>
+
+          <Columns className="content-center">
+            {employees &&
+              employees.map((employee) => (
+                <Columns.Column
+                  key={employee.id}
+                  style={{ maxWidth: 400, margin: 'auto' }}
+                  mobile={{ size: 12 }}
+                  tablet={{ size: 6 }}
+                  desktop={{ size: 4 }}
+                >
+                  <Avatar person={employee} />
+                </Columns.Column>
+              ))}
           </Columns>
         </Hero.Body>
       </Hero>
@@ -220,7 +236,7 @@ const Index = ({ data }) => {
       <Hero size="small" color="black">
         <Hero.Body>
           <img
-            src={minotaurLogo}
+            src={images.minotaur}
             alt="minotaur"
             width={225}
             style={{ display: 'block', margin: 'auto', borderRadius: '100%' }}
@@ -232,7 +248,7 @@ const Index = ({ data }) => {
       <Hero size="small" color="black">
         <Hero.Body>
           <Columns style={{ width: '80%', margin: 'auto' }}>
-            <Columns.Column size={1}></Columns.Column>
+            <Columns.Column size={1} />
             <Columns.Column size="one-third">
               <Heading renderAs="h3">OUR MISSION</Heading>
             </Columns.Column>
@@ -242,7 +258,10 @@ const Index = ({ data }) => {
               </Content>
               <br />
               <Modal
-                button={{ color: 'white', text: 'Read the full Statement' }}
+                button={{
+                  color: 'white',
+                  text: 'Read the full Statement',
+                }}
                 modal={{ closeOnBlur: true, showClose: true }}
               >
                 <Hero color="white">
@@ -261,22 +280,22 @@ const Index = ({ data }) => {
       <Hero size="medium">
         <Hero.Body>
           <Columns>
-            <Columns.Column></Columns.Column>
+            <Columns.Column />
             <Columns.Column size="two-fifths">
-              <Heading style={{ textAlign: 'center' }} renderAs="h2" size={4}>
+              <Heading className="text-center" renderAs="h2" size={4}>
                 CONNECT WITH US
               </Heading>
               <br />
               <Content className="row evenly">
                 {youtube && (
                   <Media.Item
-                    style={{ textAlign: 'center' }}
+                    className="text-center"
                     renderAs="a"
                     target="_blank"
                     href={youtube}
                   >
                     <img
-                      src={youtubeLogo}
+                      src={images.youtube}
                       alt="youtube"
                       width={75}
                       className="social-btn"
@@ -285,13 +304,13 @@ const Index = ({ data }) => {
                 )}
                 {instagram && (
                   <Media.Item
-                    style={{ textAlign: 'center' }}
+                    className="text-center"
                     renderAs="a"
                     target="_blank"
                     href={instagram}
                   >
                     <img
-                      src={instagramLogo}
+                      src={images.instagram}
                       alt="instagram"
                       width={75}
                       className="social-btn"
@@ -300,13 +319,13 @@ const Index = ({ data }) => {
                 )}
                 {facebook && (
                   <Media.Item
-                    style={{ textAlign: 'center' }}
+                    className="text-center"
                     renderAs="a"
                     target="_blank"
                     href={facebook}
                   >
                     <img
-                      src={facebookLogo}
+                      src={images.facebook}
                       alt="facebook"
                       width={75}
                       className="social-btn"
@@ -315,13 +334,13 @@ const Index = ({ data }) => {
                 )}
                 {twitter && (
                   <Media.Item
-                    style={{ textAlign: 'center' }}
+                    className="text-center"
                     renderAs="a"
                     target="_blank"
                     href={twitter}
                   >
                     <img
-                      src={twitterLogo}
+                      src={images.twitter}
                       alt="twitter"
                       width={75}
                       className="social-btn"
@@ -330,7 +349,7 @@ const Index = ({ data }) => {
                 )}
               </Content>
             </Columns.Column>
-            <Columns.Column></Columns.Column>
+            <Columns.Column />
           </Columns>
         </Hero.Body>
       </Hero>
@@ -338,7 +357,7 @@ const Index = ({ data }) => {
       <Hero size="small">
         <Hero.Body>
           <Columns>
-            <Columns.Column></Columns.Column>
+            <Columns.Column />
             {/* EVENTS */}
             <Columns.Column size="two-fifths">
               <Heading renderAs="h2">
@@ -347,8 +366,8 @@ const Index = ({ data }) => {
               </Heading>
               {events && events.length > 0 ? (
                 <List>
-                  {events.map((e, i) => (
-                    <Card key={i}>
+                  {events.map((e) => (
+                    <Card key={e.name}>
                       <Card.Content>
                         <Media>
                           <Media.Item renderAs="figure" position="left">
@@ -392,7 +411,7 @@ const Index = ({ data }) => {
                 }}
               />
             </Columns.Column>
-            <Columns.Column></Columns.Column>
+            <Columns.Column />
           </Columns>
         </Hero.Body>
       </Hero>
@@ -401,7 +420,7 @@ const Index = ({ data }) => {
       <Hero id="donate" size="medium" color="primary">
         <Hero.Body>
           <Columns>
-            <Columns.Column size={1}></Columns.Column>
+            <Columns.Column size={1} />
             <Columns.Column>
               <Heading renderAs="h2">HELP SUPPORT OUR FIRST RESPONDERS</Heading>
               <Heading renderAs="h3" subtitle>
@@ -420,7 +439,7 @@ const Index = ({ data }) => {
                   rel="noopener noreferrer"
                   className="donate-btn"
                 >
-                  <img src={paypalLogo} alt="paypal" width={150} />
+                  <img src={images.paypal} alt="paypal" width={150} />
                 </Content>
                 <br />
                 <Content
@@ -430,7 +449,7 @@ const Index = ({ data }) => {
                   rel="noopener noreferrer"
                   className="donate-btn"
                 >
-                  <img src={gofundmeLogo} alt="gofundme" width={150} />
+                  <img src={images.gofundme} alt="gofundme" width={150} />
                 </Content>
               </Content>
             </Columns.Column>
@@ -442,21 +461,29 @@ const Index = ({ data }) => {
       <Hero id="contactus" size="medium">
         <Hero.Body>
           <Columns>
-            <Columns.Column></Columns.Column>
+            <Columns.Column />
             <Columns.Column size="half">
               <ContactForm />
             </Columns.Column>
-            <Columns.Column></Columns.Column>
+            <Columns.Column />
           </Columns>
         </Hero.Body>
       </Hero>
       <Footer urls={contact_links} />
-    </Page>
+    </>
   );
 };
 
 Index.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    events: PropTypes.array,
+    mission_statement: PropTypes.string,
+    contact_links: PropTypes.object,
+    additional_links: PropTypes.object,
+    gallery: PropTypes.array,
+    news: PropTypes.array,
+    employees: PropTypes.array,
+  }).isRequired,
 };
 
 /* Primary query made up of sub queries in fragment form for reuse in other pages */
@@ -525,6 +552,22 @@ export const query = graphql`
     }
   }
 
+  fragment businessEmployees on StrapiBusiness {
+    employees {
+      id
+      name
+      bio
+      title
+      picture {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+
   query($strapiBusinessId: String) {
     strapiBusiness(id: { eq: $strapiBusinessId }) {
       ...businessMeta
@@ -532,6 +575,7 @@ export const query = graphql`
       ...businessEvents
       ...galleryImages
       ...businessNews
+      ...businessEmployees
     }
   }
 `;

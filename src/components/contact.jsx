@@ -11,12 +11,15 @@ import Heading from 'react-bulma-components/lib/components/heading';
 import Box from 'react-bulma-components/lib/components/box';
 
 class ContactForm extends React.Component {
-  state = {
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  };
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+    };
+  }
 
   onChange = (e) => {
     const value =

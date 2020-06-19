@@ -4,8 +4,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 
 :root {
-  --nypd-blue-dark: #{$nypd-blue-dark};
-  --nypd-blue-light: #{$nypd-blue-light};
+  --theme-blue: #{$nypd-blue};
+  --theme-blue-dark: #{$nypd-blue-dark};
+  --theme-blue-light: #{$nypd-blue-light};
+  --theme-blue-lighter: #{$nypd-blue-lighter};
+  --theme-blue-link: #{$blue-link};
+  --theme-yellow: #{$nypd-yellow};
+  --theme-red: #{$fdny-red};
+  --theme-green: #{$mil-green};
+  --theme-black: #{$black};
+  --theme-gray: #{$gray};
+  --theme-gray-light: #{$gray-light};
+  --theme-white: #{$white};
+  --theme-white-darker: #{$white-darker};
 }
 
 /*
@@ -15,7 +26,7 @@
 body {
   font-family: 'Helvetica Neue', sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu;
-  background-color: $white-dark;
+  background-color: var(--theme-white-darker);
   * {
     box-sizing: border-box;
   }
@@ -49,8 +60,12 @@ body {
   margin-bottom: 12px;
 }
 
-.centered {
-  text-align: center;
+.text-center {
+  text-align: center !important;
+}
+
+.content-center {
+  justify-content: center;
 }
 
 /* HEADERS */
@@ -66,7 +81,7 @@ h6 {
 .hero.is-black {
   .title,
   a {
-    color: $nypd-yellow !important;
+    color: var(--theme-yellow) !important;
   }
 }
 .title svg {
@@ -78,12 +93,12 @@ ul li::before {
   content: '▹';
   position: absolute;
   margin-left: -1em;
-  color: $nypd-blue-light;
+  color: var(--theme-blue-light);
 }
 
 /* BUTTONS */
 .donate-btn {
-  background-color: $white;
+  background-color: var(--theme-white);
   margin: 0 auto;
   padding: 24px 48px;
   border-radius: 9999px;
@@ -91,21 +106,21 @@ ul li::before {
 
 /* LINKS */
 a {
-  color: $blue-link !important;
+  color: var(--theme-blue-link) !important;
   &:active {
-    color: $blue-link !important;
+    color: var(--theme-blue-link) !important;
   }
   &:visited {
-    color: $blue-link !important;
+    color: var(--theme-blue-link) !important;
   }
   &:hover {
-    color: $nypd-blue !important;
+    color: var(--theme-blue-link) !important;
   }
 }
 
 /* SVG */
 svg {
-  color: $nypd-blue-light;
+  color: var(--theme-blue-light);
 }
 
 /* HOVER TRANSFORMS */
@@ -119,7 +134,7 @@ svg {
 /* FOOTER */
 .footer {
   * {
-    color: $white;
+    color: var(--theme-white);
   }
 
   .level-item {
@@ -128,6 +143,33 @@ svg {
 }
 
 /* react-image-lightbox */
+.ril__toolbarItem {
+  &::before {
+    display: none;
+  }
+}
+
+.avatar-lightbox {
+  img {
+    top: -125px;
+  }
+}
+
+.ril__caption {
+  max-height: 250px !important;
+
+  .ril__captionContent {
+    padding: 16px 24px;
+    color: var(--theme-black);
+    font-size: 0.875rem;
+  }
+}
+
+.ril__caption,
 .ril__toolbar {
-  display: none !important;
+  background-color: var(--theme-white-darker);
+}
+
+.ril__toolbar {
+  background-color: var(--theme-black);
 }

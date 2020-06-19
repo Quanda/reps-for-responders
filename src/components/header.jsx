@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import Heading from 'react-bulma-components/lib/components/heading';
-import logo from '../../static/img/logo.png';
+import { brandLogo } from '../../static/img';
 
-const HeaderLink = styled(Link)`
+const BrandBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,8 +12,9 @@ const HeaderLink = styled(Link)`
   text-transform: uppercase;
   padding: 3rem;
   width: 100%;
-  background-color: #102040;
-  border-bottom: 2px solid #b7b7b7;
+  position: relative;
+  background-color: var(--theme-blue-dark);
+  border-bottom: 2px solid var(--theme-gray);
 
   img {
     width: 85px;
@@ -22,17 +22,25 @@ const HeaderLink = styled(Link)`
   }
 
   .title {
-    color: #ffffff;
+    color: var(--theme-white);
   }
   .subtitle {
-    color: #b7b7b7;
+    color: var(--theme-gray);
   }
+`;
+
+const NoticeText = styled.p`
+  position: absolute;
+  right: 24px;
+  bottom: 8px;
+  font-size: 0.875rem;
+  color: var(--theme-yellow);
 `;
 
 const Header = ({ title, caption }) => (
   <header>
-    <HeaderLink to="/">
-      <img src={logo} alt="logo" />
+    <BrandBar>
+      <img src={brandLogo} alt="logo" />
       <div className="col">
         <Heading renderAs="h1" size={4}>
           {title}
@@ -43,13 +51,18 @@ const Header = ({ title, caption }) => (
           </Heading>
         )}
       </div>
-    </HeaderLink>
+      <NoticeText>New location coming soon...</NoticeText>
+    </BrandBar>
   </header>
 );
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   caption: PropTypes.string,
+};
+
+Header.defaultProps = {
+  caption: 'A Commitment to First Responder Health.',
 };
 
 export default Header;

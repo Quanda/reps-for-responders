@@ -25,7 +25,7 @@ export const Container = styled.div`
   .prev {
     position: absolute;
     background: transparent;
-    color: var(--nypd-blue-dark);
+    color: var(--theme-gray);
     border: 0;
     top: calc(50% - 20px);
     width: 42px;

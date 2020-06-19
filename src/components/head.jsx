@@ -1,9 +1,10 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 import { Location } from '@reach/router';
-import schemaGenerator from 'helpers/schemaGenerator';
+import schemaGenerator from '../helpers/schemaGenerator';
 
 const Head = ({
   siteTitle,
@@ -140,7 +141,7 @@ const Head = ({
     <link
       href="https://fonts.googleapis.com/css?family=Lato|Roboto|Roboto+Slab&display=swap"
       rel="stylesheet"
-    ></link>
+    />
     <script type="application/ld+json">
       {JSON.stringify(
         schemaGenerator({
@@ -158,16 +159,16 @@ const Head = ({
 
 Head.propTypes = {
   siteTitle: PropTypes.string,
-  siteTitleShort: PropTypes.string,
   siteDescription: PropTypes.string,
   siteUrl: PropTypes.string,
   themeColor: PropTypes.string,
-  social: PropTypes.objectOf(PropTypes.string),
   imageUrl: PropTypes.string,
   canonical: PropTypes.string,
   pageTitle: PropTypes.string,
   pageTitleFull: PropTypes.string,
-  location: PropTypes.object.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
 };
 
 const HeadWithQuery = (props) => (

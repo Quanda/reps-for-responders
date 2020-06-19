@@ -1,3 +1,6 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-console */
 const path = require('path');
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
@@ -66,10 +69,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     title: String
   }
   type Employee {
+    id: String
     name: String
     bio: String
-    phone: String
-    email: String
+    title: String
     picture: File
   }
 `;

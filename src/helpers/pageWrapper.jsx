@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import { Head, Header } from '.';
+import { Head, Header } from '../components';
 
 const Page = ({ data, children }) => {
   const { name, caption } = data.strapiBusiness;
@@ -17,7 +17,6 @@ const Page = ({ data, children }) => {
 
 Page.propTypes = {
   children: PropTypes.node.isRequired,
-  data: PropTypes.object.isRequired,
 };
 
 const PageWithQuery = (props) => (
@@ -30,7 +29,7 @@ const PageWithQuery = (props) => (
         }
       }
     `}
-    render={(data) => <Page data={data} {...props} />}
+    render={(data) => <Page data={data}>{props.children}</Page>}
   />
 );
 

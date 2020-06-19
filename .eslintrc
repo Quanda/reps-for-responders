@@ -17,10 +17,14 @@
     "it": "readonly"
   },
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
     "import/prefer-default-export": 0,
     "react/prop-types": 0,
     "spaced-comment": [2, "always"],
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "camelcase": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }

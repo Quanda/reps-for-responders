@@ -7,5 +7,5 @@ module.exports = {
   themeColor: `#181818`,
   backgroundColor: `#fff`,
   pathPrefix: null,
-  iconPath: 'static/img/logo.png',
+  iconPath: 'static/img/brand/logo.png',
 };
