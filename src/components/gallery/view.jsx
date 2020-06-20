@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from '@popmotion/popcorn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Lightbox from 'react-image-lightbox';
-import { Container } from './style';
+import { StyledContainer } from './style';
 import 'react-image-lightbox/style.css';
 
 /**
@@ -47,8 +47,10 @@ const Gallery = ({ images }) => {
   // lightbox
   const [isLightboxOpen, toggleLightboxOpen] = useState(false);
 
-  return (
-    <Container>
+  return images.fixed.length === 0 ? (
+    <span>No images to display</span>
+  ) : (
+    <StyledContainer>
       <AnimatePresence initial={false} custom={direction}>
         <div className="img-wrapper">
           <motion.img
@@ -106,7 +108,7 @@ const Gallery = ({ images }) => {
           onMoveNextRequest={() => paginate(1)}
         />
       )}
-    </Container>
+    </StyledContainer>
   );
 };
 

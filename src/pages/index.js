@@ -398,7 +398,7 @@ const Index = ({ data }) => {
                 Image Gallery
               </Heading>
               <Heading subtitle size={6}>
-                Swipe through images, or click to view expanded
+                Swipe through, or tap to view in fullscreen
               </Heading>
               <Gallery
                 images={{
