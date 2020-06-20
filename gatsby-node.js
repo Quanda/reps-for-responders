@@ -85,11 +85,15 @@ exports.onCreateNode = async ({
   store,
   cache,
 }) => {
-  if (node.internal.type === 'StrapiBusiness') {
+  if (
+    node.internal.type === 'StrapiBusiness' &&
+    node.id === process.env.STRAPI_BUSINESS_ID
+  ) {
     for (const img of node.gallery) {
       try {
+        const isHttpNode = img.url.startsWith('http');
         const fileNode = await createRemoteFileNode({
-          url: process.env.API_URL + img.url,
+          url: isHttpNode ? img.url : process.env.API_URL + img.url,
           store,
           cache,
           createNode,
