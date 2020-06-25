@@ -45,7 +45,7 @@ const Index = ({ data }) => {
                     <Content renderAs="li">
                       The RFR team consists of caring & dedicated individuals
                       with extensive fitness backgrounds and experiences
-                      overcoming trauma
+                      overcoming obstacles
                     </Content>
                   </Content>
                   <Content className="row evenly">
