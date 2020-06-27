@@ -8,8 +8,8 @@ import Container from 'react-bulma-components/lib/components/container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { usaFlag } from '../../static/img';
 
-const SocialMediaFooter = ({ urls }) => {
-  const { youtube, instagram, facebook, twitter, email } = urls;
+const SocialMediaFooter = ({ social_media, email }) => {
+  const { youtube, instagram, facebook, twitter } = social_media;
 
   return (
     <Hero size="small" color="primary">
@@ -26,7 +26,7 @@ const SocialMediaFooter = ({ urls }) => {
                   subtitle
                   size={6}
                 >
-                  {urls.email}
+                  {email}
                 </Heading>
               </Level.Item>
               <Level.Item>
@@ -60,13 +60,13 @@ const SocialMediaFooter = ({ urls }) => {
 };
 
 SocialMediaFooter.propTypes = {
-  urls: PropTypes.shape({
+  social_media: PropTypes.shape({
     youtube: PropTypes.string,
     instagram: PropTypes.string,
     facebook: PropTypes.string,
     twitter: PropTypes.string,
-    email: PropTypes.string,
   }),
+  email: PropTypes.string,
 };
 
 export default SocialMediaFooter;

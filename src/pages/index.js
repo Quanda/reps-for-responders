@@ -17,13 +17,15 @@ const Index = ({ data }) => {
   const {
     events,
     mission_statement,
-    contact_links,
-    additional_links,
+    business_email,
+    payment_links,
+    podcast_links,
+    social_media_links,
     gallery,
     news,
     employees,
   } = data.strapiBusiness;
-  const { youtube, instagram, facebook, twitter } = contact_links;
+  const { youtube, instagram, facebook, twitter } = social_media_links;
 
   return (
     <>
@@ -152,10 +154,10 @@ const Index = ({ data }) => {
               </Heading>
               <Card>
                 <Card.Content>
-                  {additional_links.applePodcast && (
+                  {podcast_links.apple && (
                     <Content
                       renderAs="a"
-                      href={additional_links.applePodcast}
+                      href={podcast_links.apple}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -167,10 +169,10 @@ const Index = ({ data }) => {
                       />
                     </Content>
                   )}
-                  {additional_links.spotifyPodcast && (
+                  {podcast_links.spotify && (
                     <Content
                       renderAs="a"
-                      href={additional_links.spotifyPodcast}
+                      href={podcast_links.spotify}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -182,10 +184,10 @@ const Index = ({ data }) => {
                       />
                     </Content>
                   )}
-                  {additional_links.anchorFmPodcast && (
+                  {podcast_links.anchorFm && (
                     <Content
                       renderAs="a"
-                      href={additional_links.anchorFmPodcast}
+                      href={podcast_links.anchorFm}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -434,7 +436,7 @@ const Index = ({ data }) => {
               <Content className="col">
                 <Content
                   renderAs="a"
-                  href={additional_links.paypal}
+                  href={payment_links.paypal}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="donate-btn"
@@ -444,7 +446,7 @@ const Index = ({ data }) => {
                 <br />
                 <Content
                   renderAs="a"
-                  href={additional_links.gofundme}
+                  href={payment_links.gofundme}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="donate-btn"
@@ -469,7 +471,7 @@ const Index = ({ data }) => {
           </Columns>
         </Hero.Body>
       </Hero>
-      <Footer urls={contact_links} />
+      <Footer social_media={social_media_links} email={business_email} />
     </>
   );
 };
@@ -478,8 +480,10 @@ Index.propTypes = {
   data: PropTypes.shape({
     events: PropTypes.array,
     mission_statement: PropTypes.string,
-    contact_links: PropTypes.object,
-    additional_links: PropTypes.object,
+    business_email: PropTypes.string,
+    social_media_links: PropTypes.object,
+    payment_links: PropTypes.object,
+    podcast_links: PropTypes.object,
     gallery: PropTypes.array,
     news: PropTypes.array,
     employees: PropTypes.array,
@@ -488,94 +492,72 @@ Index.propTypes = {
 
 /* Primary query made up of sub queries in fragment form for reuse in other pages */
 export const query = graphql`
-  fragment businessMeta on StrapiBusiness {
-    name
-    caption
-    mission_statement
-    business_hours {
-      Monday
-      Tuesday
-      Wednesday
-      Thursday
-      Friday
-      Saturday
-      Sunday
-    }
-  }
-
-  fragment businessUrls on StrapiBusiness {
-    additional_links {
-      paypal
-      gofundme
-      anchorFmPodcast
-      applePodcast
-      spotifyPodcast
-    }
-    contact_links {
-      instagram
-      youtube
-      facebook
-      twitter
-      email
-    }
-  }
-
-  fragment businessEvents on StrapiBusiness {
-    events {
-      name
-      description
-      date
-    }
-  }
-
-  fragment galleryImages on StrapiBusiness {
-    gallery {
-      name
-      localFile {
-        childImageSharp {
-          fixed(height: 400, quality: 100) {
-            ...GatsbyImageSharpFixed
-          }
-          fluid(quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  }
-
-  fragment businessNews on StrapiBusiness {
-    news {
-      source
-      title
-      url
-    }
-  }
-
-  fragment businessEmployees on StrapiBusiness {
-    employees {
-      id
-      name
-      bio
-      title
-      picture {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  }
-
   query($strapiBusinessId: String) {
     strapiBusiness(id: { eq: $strapiBusinessId }) {
-      ...businessMeta
-      ...businessUrls
-      ...businessEvents
-      ...galleryImages
-      ...businessNews
-      ...businessEmployees
+      name
+      caption
+      business_email
+      mission_statement
+      business_hours {
+        Monday
+        Tuesday
+        Wednesday
+        Thursday
+        Friday
+        Saturday
+        Sunday
+      }
+      podcast_links {
+        anchorFm
+        apple
+        spotify
+      }
+      payment_links {
+        paypal
+        gofundme
+      }
+      social_media_links {
+        instagram
+        youtube
+        facebook
+        twitter
+      }
+      events {
+        name
+        description
+        date
+      }
+      gallery {
+        name
+        localFile {
+          childImageSharp {
+            fixed(height: 400, quality: 100) {
+              ...GatsbyImageSharpFixed
+            }
+            fluid(quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+      news {
+        source
+        title
+        url
+      }
+      employees {
+        id
+        name
+        bio
+        title
+        picture {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
     }
   }
 `;

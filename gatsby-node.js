@@ -22,10 +22,12 @@ exports.createSchemaCustomization = ({ actions }) => {
   type StrapiBusiness implements Node {
     name: String
     caption: String
+    business_email: String
     mission_statement: String
     business_hours: Week
-    contact_links: ContactLinks
-    additional_links: AdditionalLinks
+    social_media_links: SocialMediaLinks
+    payment_links: PaymentLinks
+    podcast_links: PodcastLinks
     events: [Event]
     gallery: [MediaObject]
     news: [NewsObject]
@@ -45,19 +47,20 @@ exports.createSchemaCustomization = ({ actions }) => {
     Saturday: Date
     Sunday: Date
   }
-  type ContactLinks {
+  type SocialMediaLinks {
     youtube: String
     instagram: String
     facebook: String
     twitter: String
-    email: String
   }
-  type AdditionalLinks {
+  type PaymentLinks {
     paypal: String
     gofundme: String
-    anchorFmPodcast: String
-    applePodcast: String
-    spotifyPodcast: String
+  }
+  type PodcastLinks {
+    anchorFm: String
+    apple: String
+    spotify: String
   }
   type MediaObject {
     name: String
