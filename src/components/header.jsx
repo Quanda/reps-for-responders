@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Heading from 'react-bulma-components/lib/components/heading';
-import { brandLogo } from '../../static/img';
 
 const BrandBar = styled.div`
   display: flex;
@@ -37,10 +36,10 @@ const NoticeText = styled.p`
   color: var(--theme-yellow);
 `;
 
-const Header = ({ title, caption }) => (
+const Header = ({ title, caption, logoSrc }) => (
   <header>
     <BrandBar>
-      <img src={brandLogo} alt="logo" />
+      <img src={logoSrc} alt="logo" />
       <div className="col">
         <Heading renderAs="h1" size={4}>
           {title}

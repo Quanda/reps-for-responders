@@ -214,10 +214,10 @@ const Index = ({ data }) => {
       <Hero>
         <Hero.Body>
           <br />
-          <Heading className="text-center" renderAs="h3">
+          <Heading className="text-center" renderAs="h2">
             MEET OUR TEAM
           </Heading>
-
+          <br />
           <Columns className="content-center">
             {employees &&
               employees.map((employee) => (
@@ -284,7 +284,7 @@ const Index = ({ data }) => {
           <Columns>
             <Columns.Column />
             <Columns.Column size="two-fifths">
-              <Heading className="text-center" renderAs="h2" size={4}>
+              <Heading className="text-center" renderAs="h2">
                 CONNECT WITH US
               </Heading>
               <br />
@@ -465,6 +465,10 @@ const Index = ({ data }) => {
           <Columns>
             <Columns.Column />
             <Columns.Column size="half">
+              <Heading className="text-center" renderAs="h2">
+                SEND A MESSAGE
+              </Heading>
+              <br />
               <ContactForm />
             </Columns.Column>
             <Columns.Column />
@@ -490,12 +494,25 @@ Index.propTypes = {
   }).isRequired,
 };
 
-/* Primary query made up of sub queries in fragment form for reuse in other pages */
+/* GRAPHQL index query */
 export const query = graphql`
   query($strapiBusinessId: String) {
     strapiBusiness(id: { eq: $strapiBusinessId }) {
       name
       caption
+      logo {
+        name
+        localFile {
+          childImageSharp {
+            fixed(width: 85, quality: 100) {
+              ...GatsbyImageSharpFixed
+            }
+            fluid(quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
       business_email
       mission_statement
       business_hours {

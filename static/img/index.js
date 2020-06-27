@@ -10,7 +10,7 @@ export { default as spotify } from './podcast/spotify.png';
 export { default as gofundme } from './donate/gofundme.png';
 export { default as paypal } from './donate/paypal.png';
 
-export { default as brandLogo } from './brand/logo.png';
+export { default as staticLogoSrc } from './brand/logo.png';
 export { default as minotaur } from './brand/minotaur.jpeg';
 
 export { default as usaFlag } from './misc/usa.jpg';

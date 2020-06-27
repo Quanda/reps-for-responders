@@ -22,6 +22,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   type StrapiBusiness implements Node {
     name: String
     caption: String
+    logo: MediaObject,
     business_email: String
     mission_statement: String
     business_hours: Week
@@ -92,7 +93,8 @@ exports.onCreateNode = async ({
     node.internal.type === 'StrapiBusiness' &&
     node.id === process.env.STRAPI_BUSINESS_ID
   ) {
-    for (const img of node.gallery) {
+    const mediaAssets = [...node.gallery, node.logo];
+    for (const img of mediaAssets) {
       try {
         const isHttpNode = img.url.startsWith('http');
         const fileNode = await createRemoteFileNode({
