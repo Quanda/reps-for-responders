@@ -42,6 +42,7 @@ class ContactForm extends React.Component {
           name="contact"
           method="POST"
           netlify-honeypot="bot-field"
+          data-netlify-recaptcha="true"
           data-netlify="true"
         >
           <input type="hidden" name="bot-field" />
@@ -90,6 +91,7 @@ class ContactForm extends React.Component {
               value={message}
             />
           </Field>
+          <div data-netlify-recaptcha="true" />
           <Field kind="group">
             <Control>
               <Button type="reset">Cancel</Button>
