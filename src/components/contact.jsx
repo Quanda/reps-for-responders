@@ -9,6 +9,7 @@ import {
 import Button from 'react-bulma-components/lib/components/button';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Box from 'react-bulma-components/lib/components/box';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 class ContactForm extends React.Component {
   constructor() {
@@ -91,8 +92,8 @@ class ContactForm extends React.Component {
               value={message}
             />
           </Field>
-          {/* eslint-disable-next-line react/self-closing-comp */}
-          <div data-netlify-recaptcha="true"></div>
+          <ReCAPTCHA sitekey={process.env.SITE_RECAPTCHA_KEY} />
+          <br />
           <Field kind="group">
             <Control>
               <Button type="reset">Cancel</Button>
