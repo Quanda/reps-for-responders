@@ -91,7 +91,8 @@ class ContactForm extends React.Component {
               value={message}
             />
           </Field>
-          <div data-netlify-recaptcha="true" />
+          {/* eslint-disable-next-line react/self-closing-comp */}
+          <div data-netlify-recaptcha="true"></div>
           <Field kind="group">
             <Control>
               <Button type="reset">Cancel</Button>
