@@ -19,6 +19,7 @@ class ContactForm extends React.Component {
       email: '',
       phone: '',
       message: '',
+      recaptchaDone: false,
     };
   }
 
@@ -28,8 +29,12 @@ class ContactForm extends React.Component {
     this.setState({ [e.target.name]: value });
   };
 
+  onRecaptchaChange = () => {
+    this.setState({ recaptchaDone: true });
+  };
+
   render() {
-    const { name, email, message, phone } = this.state;
+    const { name, email, message, phone, recaptchaDone } = this.state;
 
     return (
       <Box>
@@ -56,6 +61,7 @@ class ContactForm extends React.Component {
                 placeholder="Your Name"
                 onChange={this.onChange}
                 value={name}
+                required
               />
             </Control>
           </Field>
@@ -68,6 +74,7 @@ class ContactForm extends React.Component {
                 placeholder="Email"
                 onChange={this.onChange}
                 value={email}
+                required
               />
             </Control>
           </Field>
@@ -90,10 +97,14 @@ class ContactForm extends React.Component {
               placeholder="Start a conversation and we will get back to you"
               onChange={this.onChange}
               value={message}
+              required
             />
           </Field>
           {process.env.SITE_RECAPTCHA_KEY && (
-            <ReCAPTCHA sitekey={process.env.SITE_RECAPTCHA_KEY} />
+            <ReCAPTCHA
+              sitekey={process.env.SITE_RECAPTCHA_KEY}
+              onChange={this.onRecaptchaChange}
+            />
           )}
           <br />
           <Field kind="group">
@@ -101,7 +112,7 @@ class ContactForm extends React.Component {
               <Button type="reset">Cancel</Button>
             </Control>
             <Control>
-              <Button color="link" type="submit">
+              <Button color="link" type="submit" disabled={!recaptchaDone}>
                 Send Message
               </Button>
             </Control>
