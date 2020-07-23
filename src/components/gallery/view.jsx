@@ -56,6 +56,7 @@ const Gallery = ({ images }) => {
           <motion.img
             key={page}
             src={images.fixed[imageIndex]}
+            alt="gallery image"
             custom={direction}
             variants={variants}
             initial="enter"

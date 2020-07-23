@@ -31,22 +31,22 @@ const SocialMediaFooter = ({ social_media, email }) => {
               </Level.Item>
               <Level.Item>
                 {youtube && (
-                  <a href={youtube}>
+                  <a href={youtube} aria-label="youtube">
                     <FontAwesomeIcon size="1x" icon={['fab', 'youtube']} />
                   </a>
                 )}
                 {instagram && (
-                  <a href={instagram}>
+                  <a href={instagram} aria-label="instagram">
                     <FontAwesomeIcon size="1x" icon={['fab', 'instagram']} />
                   </a>
                 )}
                 {facebook && (
-                  <a href={facebook}>
+                  <a href={facebook} aria-label="facebook">
                     <FontAwesomeIcon size="1x" icon={['fab', 'facebook']} />
                   </a>
                 )}
                 {twitter && (
-                  <a href={twitter}>
+                  <a href={twitter} aria-label="twitter">
                     <FontAwesomeIcon size="1x" icon={['fab', 'twitter']} />
                   </a>
                 )}

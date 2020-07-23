@@ -294,6 +294,7 @@ const Index = ({ data }) => {
                     className="text-center"
                     renderAs="a"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={youtube}
                   >
                     <img
@@ -309,6 +310,7 @@ const Index = ({ data }) => {
                     className="text-center"
                     renderAs="a"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={instagram}
                   >
                     <img
@@ -324,6 +326,7 @@ const Index = ({ data }) => {
                     className="text-center"
                     renderAs="a"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={facebook}
                   >
                     <img
@@ -339,6 +342,7 @@ const Index = ({ data }) => {
                     className="text-center"
                     renderAs="a"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={twitter}
                   >
                     <img

@@ -53,52 +53,60 @@ class ContactForm extends React.Component {
         >
           <input type="hidden" name="bot-field" />
           <Field>
-            <Label>Name</Label>
-            <Control>
-              <Input
-                type="text"
-                name="name"
-                placeholder="Your Name"
+            <Label>
+              Name
+              <Control>
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  onChange={this.onChange}
+                  value={name}
+                  required
+                />
+              </Control>
+            </Label>
+          </Field>
+          <Field>
+            <Label>
+              Email
+              <Control>
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  onChange={this.onChange}
+                  value={email}
+                  required
+                />
+              </Control>
+            </Label>
+          </Field>
+          <Field>
+            <Label>
+              Phone
+              <Control>
+                <Input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone"
+                  onChange={this.onChange}
+                  value={phone}
+                />
+              </Control>
+            </Label>
+          </Field>
+          <Field>
+            <Label>
+              Message
+              <Textarea
+                name="message"
+                placeholder="Start a conversation and we will get back to you"
                 onChange={this.onChange}
-                value={name}
+                value={message}
                 required
               />
-            </Control>
-          </Field>
-          <Field>
-            <Label>Email</Label>
-            <Control>
-              <Input
-                name="email"
-                type="email"
-                placeholder="Email"
-                onChange={this.onChange}
-                value={email}
-                required
-              />
-            </Control>
-          </Field>
-          <Field>
-            <Label>Phone</Label>
-            <Control>
-              <Input
-                type="tel"
-                name="phone"
-                placeholder="Phone"
-                onChange={this.onChange}
-                value={phone}
-              />
-            </Control>
-          </Field>
-          <Field>
-            <Label>Message</Label>
-            <Textarea
-              name="message"
-              placeholder="Start a conversation and we will get back to you"
-              onChange={this.onChange}
-              value={message}
-              required
-            />
+            </Label>
           </Field>
           {process.env.SITE_RECAPTCHA_KEY && (
             <ReCAPTCHA

@@ -24,6 +24,7 @@ const Avatar = ({ person }) => {
         <StyledCardContent>
           <StyledModalWrapper
             role="button"
+            aria-label="open fullscreen view"
             tabIndex="0"
             onClick={() => toggleLightboxOpen(true)}
             onKeyPress={() => toggleLightboxOpen(true)}
