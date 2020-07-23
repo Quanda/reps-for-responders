@@ -47,5 +47,11 @@ module.exports = {
         trackingId: process.env.GA_TRACKING_ID,
       },
     },
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: ['SITE_RECAPTCHA_KEY'],
+      },
+    },
   ],
 };
