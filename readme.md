@@ -3,7 +3,11 @@
     <h1>Reps for Responders</h1>
     <a href="https://app.netlify.com/sites/repsforresponders/deploys" target="_blank">
       <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/face5ec0-8ff0-4f39-8c23-ed4cebcee4ba/deploy-status" />
-    </a>    
+    </a>
+    <br /><br />
+    <div>
+      <img alt="lighthouse audit" src="static/img/misc/audit.png" />
+    </div>
 </div>
 
 ## Usage
