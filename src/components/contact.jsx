@@ -92,7 +92,9 @@ class ContactForm extends React.Component {
               value={message}
             />
           </Field>
-          <ReCAPTCHA sitekey={process.env.SITE_RECAPTCHA_KEY} />
+          {process.env.SITE_RECAPTCHA_KEY && (
+            <ReCAPTCHA sitekey={process.env.SITE_RECAPTCHA_KEY} />
+          )}
           <br />
           <Field kind="group">
             <Control>
