@@ -450,12 +450,16 @@ const Index = ({ data }) => {
                 <br />
                 <Content
                   renderAs="a"
-                  href={payment_links.gofundme}
+                  href={payment_links.fundthefirst}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="donate-btn"
                 >
-                  <img src={images.gofundme} alt="gofundme" width={150} />
+                  <img
+                    src={images.fundthefirst}
+                    alt="fundthefirst"
+                    width={150}
+                  />
                 </Content>
               </Content>
             </Columns.Column>
@@ -535,7 +539,7 @@ export const query = graphql`
       }
       payment_links {
         paypal
-        gofundme
+        fundthefirst
       }
       social_media_links {
         instagram

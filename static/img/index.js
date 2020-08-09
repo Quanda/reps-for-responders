@@ -7,7 +7,7 @@ export { default as anchorfm } from './podcast/anchorfm.png';
 export { default as apple } from './podcast/apple.png';
 export { default as spotify } from './podcast/spotify.png';
 
-export { default as gofundme } from './donate/gofundme.png';
+export { default as fundthefirst } from './donate/fundthefirst.png';
 export { default as paypal } from './donate/paypal.png';
 
 export { default as staticLogoSrc } from './brand/logo.png';

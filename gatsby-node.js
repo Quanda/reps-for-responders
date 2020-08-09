@@ -56,7 +56,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
   type PaymentLinks {
     paypal: String
-    gofundme: String
+    fundthefirst: String
   }
   type PodcastLinks {
     anchorFm: String
