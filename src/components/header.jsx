@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Heading from 'react-bulma-components/lib/components/heading';
 
-const BrandBar = styled.div`
+const HeaderBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,7 +13,6 @@ const BrandBar = styled.div`
   width: 100%;
   position: relative;
   background-color: var(--theme-blue-dark);
-  border-bottom: 2px solid var(--theme-gray);
 
   img {
     width: 85px;
@@ -36,9 +35,28 @@ const NoticeText = styled.p`
   color: var(--theme-yellow);
 `;
 
-const Header = ({ title, caption, logoSrc }) => (
+const Banner = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  background-color: var(--theme-yellow);
+  color: var(--theme-blue-dark);
+  font-size: 0.875rem;
+  height: 48px;
+  font-weight: 500;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+`;
+
+const Header = ({ title, banner, caption, logoSrc }) => (
   <header>
-    <BrandBar>
+    {banner && <Banner>{banner}</Banner>}
+    <HeaderBar>
       <img src={logoSrc} alt="logo" />
       <div className="col">
         <Heading renderAs="h1" size={4}>
@@ -51,12 +69,13 @@ const Header = ({ title, caption, logoSrc }) => (
         )}
       </div>
       <NoticeText>New location coming soon...</NoticeText>
-    </BrandBar>
+    </HeaderBar>
   </header>
 );
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  banner: PropTypes.string,
   caption: PropTypes.string,
 };
 

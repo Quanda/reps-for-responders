@@ -16,16 +16,24 @@ import * as images from '../../static/img';
 const Index = ({ data }) => {
   const {
     events,
-    mission_statement,
-    business_email,
-    payment_links,
-    podcast_links,
-    social_media_links,
+    description,
+    email,
+    web_links,
     gallery,
     news,
     employees,
   } = data.strapiBusiness;
-  const { youtube, instagram, facebook, twitter } = social_media_links;
+  const {
+    youtube,
+    instagram,
+    facebook,
+    twitter,
+    anchorfm,
+    apple_podcast,
+    spotify_podcast,
+    paypal,
+    fundthefirst,
+  } = web_links;
 
   return (
     <>
@@ -154,10 +162,10 @@ const Index = ({ data }) => {
               </Heading>
               <Card>
                 <Card.Content>
-                  {podcast_links.apple && (
+                  {apple_podcast && (
                     <Content
                       renderAs="a"
-                      href={podcast_links.apple}
+                      href={apple_podcast}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -169,10 +177,10 @@ const Index = ({ data }) => {
                       />
                     </Content>
                   )}
-                  {podcast_links.spotify && (
+                  {spotify_podcast && (
                     <Content
                       renderAs="a"
-                      href={podcast_links.spotify}
+                      href={spotify_podcast}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -184,10 +192,10 @@ const Index = ({ data }) => {
                       />
                     </Content>
                   )}
-                  {podcast_links.anchorFm && (
+                  {anchorfm && (
                     <Content
                       renderAs="a"
-                      href={podcast_links.anchorFm}
+                      href={anchorfm}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -211,16 +219,16 @@ const Index = ({ data }) => {
       </Hero>
 
       {/* MEET THE TEAM */}
-      <Hero>
-        <Hero.Body>
-          <br />
-          <Heading className="text-center" renderAs="h2">
-            MEET OUR TEAM
-          </Heading>
-          <br />
-          <Columns className="content-center">
-            {employees &&
-              employees.map((employee) => (
+      {employees.length > 0 && (
+        <Hero>
+          <Hero.Body>
+            <br />
+            <Heading className="text-center" renderAs="h2">
+              MEET OUR TEAM
+            </Heading>
+            <br />
+            <Columns className="content-center">
+              {employees.map((employee) => (
                 <Columns.Column
                   key={employee.id}
                   style={{ maxWidth: 400, margin: 'auto' }}
@@ -231,9 +239,10 @@ const Index = ({ data }) => {
                   <Avatar person={employee} />
                 </Columns.Column>
               ))}
-          </Columns>
-        </Hero.Body>
-      </Hero>
+            </Columns>
+          </Hero.Body>
+        </Hero>
+      )}
 
       <Hero size="small" color="black">
         <Hero.Body>
@@ -247,36 +256,38 @@ const Index = ({ data }) => {
       </Hero>
 
       {/* MISSION STATEMENT */}
-      <Hero size="small" color="black">
-        <Hero.Body>
-          <Columns style={{ width: '80%', margin: 'auto' }}>
-            <Columns.Column size={1} />
-            <Columns.Column size="one-third">
-              <Heading renderAs="h3">OUR MISSION</Heading>
-            </Columns.Column>
-            <Columns.Column>
-              <Content size="medium">
-                {mission_statement.substring(0, 273)}...
-              </Content>
-              <br />
-              <Modal
-                button={{
-                  color: 'white',
-                  text: 'Read the full Statement',
-                }}
-                modal={{ closeOnBlur: true, showClose: true }}
-              >
-                <Hero color="white">
-                  <Hero.Body>
-                    <Heading renderAs="h3">OUR MISSION</Heading>
-                    <Content>{mission_statement}</Content>
-                  </Hero.Body>
-                </Hero>
-              </Modal>
-            </Columns.Column>
-          </Columns>
-        </Hero.Body>
-      </Hero>
+      {description && (
+        <Hero size="small" color="black">
+          <Hero.Body>
+            <Columns style={{ width: '80%', margin: 'auto' }}>
+              <Columns.Column size={1} />
+              <Columns.Column size="one-third">
+                <Heading renderAs="h3">OUR MISSION</Heading>
+              </Columns.Column>
+              <Columns.Column>
+                <Content size="medium">
+                  {description.substring(0, 365)}...(continued)
+                </Content>
+                <br />
+                <Modal
+                  button={{
+                    color: 'white',
+                    text: 'Read the full Statement',
+                  }}
+                  modal={{ closeOnBlur: true, showClose: true }}
+                >
+                  <Hero color="white">
+                    <Hero.Body>
+                      <Heading renderAs="h3">OUR MISSION</Heading>
+                      <Content>{description}</Content>
+                    </Hero.Body>
+                  </Hero>
+                </Modal>
+              </Columns.Column>
+            </Columns>
+          </Hero.Body>
+        </Hero>
+      )}
 
       {/* SOCIAL MEDIA */}
       <Hero size="medium">
@@ -440,7 +451,7 @@ const Index = ({ data }) => {
               <Content className="col">
                 <Content
                   renderAs="a"
-                  href={payment_links.paypal}
+                  href={paypal}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="donate-btn"
@@ -450,7 +461,7 @@ const Index = ({ data }) => {
                 <br />
                 <Content
                   renderAs="a"
-                  href={payment_links.fundthefirst}
+                  href={fundthefirst}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="donate-btn"
@@ -483,7 +494,10 @@ const Index = ({ data }) => {
           </Columns>
         </Hero.Body>
       </Hero>
-      <Footer social_media={social_media_links} email={business_email} />
+      <Footer
+        social_media={{ twitter, youtube, facebook, instagram }}
+        email={email}
+      />
     </>
   );
 };
@@ -491,11 +505,9 @@ const Index = ({ data }) => {
 Index.propTypes = {
   data: PropTypes.shape({
     events: PropTypes.array,
-    mission_statement: PropTypes.string,
-    business_email: PropTypes.string,
-    social_media_links: PropTypes.object,
-    payment_links: PropTypes.object,
-    podcast_links: PropTypes.object,
+    description: PropTypes.string,
+    email: PropTypes.string,
+    web_links: PropTypes.object,
     gallery: PropTypes.array,
     news: PropTypes.array,
     employees: PropTypes.array,
@@ -508,6 +520,7 @@ export const query = graphql`
     strapiBusiness(id: { eq: $strapiBusinessId }) {
       name
       caption
+      banner
       logo {
         name
         localFile {
@@ -521,9 +534,9 @@ export const query = graphql`
           }
         }
       }
-      business_email
-      mission_statement
-      business_hours {
+      email
+      description
+      operating_hours {
         Monday
         Tuesday
         Wednesday
@@ -532,20 +545,16 @@ export const query = graphql`
         Saturday
         Sunday
       }
-      podcast_links {
-        anchorFm
-        apple
-        spotify
-      }
-      payment_links {
-        paypal
-        fundthefirst
-      }
-      social_media_links {
+      web_links {
         instagram
         youtube
         facebook
         twitter
+        paypal
+        fundthefirst
+        anchorfm
+        apple_podcast
+        spotify_podcast
       }
       events {
         name

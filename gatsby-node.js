@@ -22,13 +22,12 @@ exports.createSchemaCustomization = ({ actions }) => {
   type StrapiBusiness implements Node {
     name: String
     caption: String
-    logo: MediaObject,
-    business_email: String
-    mission_statement: String
-    business_hours: Week
-    social_media_links: SocialMediaLinks
-    payment_links: PaymentLinks
-    podcast_links: PodcastLinks
+    logo: MediaObject
+    banner: String
+    email: String
+    description: String
+    operating_hours: Week
+    web_links: WebLink
     events: [Event]
     gallery: [MediaObject]
     news: [NewsObject]
@@ -48,20 +47,16 @@ exports.createSchemaCustomization = ({ actions }) => {
     Saturday: Date
     Sunday: Date
   }
-  type SocialMediaLinks {
+  type WebLink {
     youtube: String
     instagram: String
     facebook: String
     twitter: String
-  }
-  type PaymentLinks {
     paypal: String
     fundthefirst: String
-  }
-  type PodcastLinks {
-    anchorFm: String
-    apple: String
-    spotify: String
+    anchorfm: String
+    apple_podcast: String
+    spotify_podcast: String
   }
   type MediaObject {
     name: String
@@ -93,26 +88,28 @@ exports.onCreateNode = async ({
     node.internal.type === 'StrapiBusiness' &&
     node.id === process.env.STRAPI_BUSINESS_ID
   ) {
-    const mediaAssets = [...node.gallery, node.logo];
+    const mediaAssets = [...node.gallery, node.logo] || [];
     for (const img of mediaAssets) {
-      try {
-        const isHttpNode = img.url.startsWith('http');
-        const fileNode = await createRemoteFileNode({
-          url: isHttpNode ? img.url : process.env.API_URL + img.url,
-          store,
-          cache,
-          createNode,
-          createNodeId: (id) => id,
-        });
+      if (img) {
+        try {
+          const isHttpNode = img.url.startsWith('http');
+          const fileNode = await createRemoteFileNode({
+            url: isHttpNode ? img.url : process.env.API_URL + img.url,
+            store,
+            cache,
+            createNode,
+            createNodeId: (id) => id,
+          });
 
-        if (fileNode) {
-          img.localFile___NODE = fileNode.id;
+          if (fileNode) {
+            img.localFile___NODE = fileNode.id;
+          }
+        } catch (e) {
+          console.log(
+            'ERROR in createRemoteFileNode of onCreateNode in gatsby-node.js',
+            e
+          );
         }
-      } catch (e) {
-        console.log(
-          'ERROR in createRemoteFileNode of onCreateNode in gatsby-node.js',
-          e
-        );
       }
     }
   }
