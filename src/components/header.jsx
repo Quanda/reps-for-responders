@@ -9,7 +9,7 @@ const HeaderBar = styled.div`
   align-items: center;
   justify-content: flex-start;
   text-transform: uppercase;
-  padding: 3rem;
+  padding: 4rem 2rem;
   width: 100%;
   position: relative;
   background-color: var(--theme-blue-dark);
@@ -27,11 +27,11 @@ const HeaderBar = styled.div`
   }
 `;
 
-const NoticeText = styled.p`
+const NoticeText = styled.span`
   position: absolute;
-  right: 24px;
+  right: 16px;
   bottom: 8px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: var(--theme-yellow);
 `;
 
@@ -44,10 +44,10 @@ const Banner = styled.div`
   width: 100%;
   background-color: var(--theme-yellow);
   color: var(--theme-blue-dark);
-  font-size: 0.875rem;
-  height: 48px;
+  font-size: 0.75rem;
+  padding: 1rem 2rem;
+  height: 52px;
   font-weight: 500;
-  padding: 0 2rem;
   position: sticky;
   top: 0;
   z-index: 9999;
