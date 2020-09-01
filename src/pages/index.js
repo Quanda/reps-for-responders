@@ -416,13 +416,13 @@ const Index = ({ data }) => {
         <Hero.Body>
           <Columns>
             <Columns.Column />
-            <Columns.Column size="two-fifths">
-              <Heading renderAs="h2">
-                <FontAwesomeIcon size="1x" icon={['fas', 'comments']} />
-                Testimonials
-              </Heading>
-              {reviews.length > 0 && (
-                <List>
+            {reviews && reviews.length > 0 && (
+              <Columns.Column size="two-fifths">
+                <Heading renderAs="h2">
+                  <FontAwesomeIcon size="1x" icon={['fas', 'comments']} />
+                  Testimonials
+                </Heading>
+                <List style={{ maxHeight: 500, overflow: 'scroll' }}>
                   {reviews.map((review) => (
                     <Card key={review.text.substring(0, 15)}>
                       <Card.Content>
@@ -454,8 +454,8 @@ const Index = ({ data }) => {
                     </Card>
                   ))}
                 </List>
-              )}
-            </Columns.Column>
+              </Columns.Column>
+            )}
             <Columns.Column />
 
             {/* IMAGE GALLERY */}
@@ -494,7 +494,7 @@ const Index = ({ data }) => {
                   <FontAwesomeIcon size="1x" icon={['fas', 'calendar-alt']} />
                   Events
                 </Heading>
-                <List>
+                <List style={{ maxHeight: 500, overflow: 'scroll' }}>
                   {events.map((e) => (
                     <Card key={e.name}>
                       <Card.Content>
