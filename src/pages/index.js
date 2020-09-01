@@ -21,6 +21,7 @@ const Index = ({ data }) => {
     web_links,
     gallery,
     news,
+    promotions,
     employees,
   } = data.strapiBusiness;
   const {
@@ -212,6 +213,39 @@ const Index = ({ data }) => {
                   )}
                 </Card.Content>
               </Card>
+              <br />
+
+              {/* PROMOTIONS */}
+              {promotions.length > 0 && (
+                <>
+                  <Heading renderAs="h2">
+                    <FontAwesomeIcon size="1x" icon={['fas', 'bullhorn']} />
+                    Promotions
+                  </Heading>
+                  <Heading subtitle size={6}>
+                    Limited time only!
+                  </Heading>
+                  <List>
+                    {promotions.map((promotion) => (
+                      <Card key={promotion.url}>
+                        <Card.Content>
+                          <Heading renderAs="h6" size={6}>
+                            {promotion.title}
+                          </Heading>
+                          <Content
+                            renderAs="a"
+                            href={promotion.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {promotion.description}
+                          </Content>
+                        </Card.Content>
+                      </Card>
+                    ))}
+                  </List>
+                </>
+              )}
             </Columns.Column>
             <Columns.Column />
           </Columns>
@@ -511,6 +545,7 @@ Index.propTypes = {
     gallery: PropTypes.array,
     news: PropTypes.array,
     employees: PropTypes.array,
+    promotions: PropTypes.array,
   }).isRequired,
 };
 
@@ -578,6 +613,11 @@ export const query = graphql`
         source
         title
         url
+      }
+      promotions {
+        url
+        title
+        description
       }
       employees {
         id

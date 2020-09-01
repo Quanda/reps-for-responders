@@ -32,6 +32,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     gallery: [MediaObject]
     news: [NewsObject]
     employees: [Employee]
+    promotions: [PromotionObject]
   }
   type Event {
     name: String
@@ -73,6 +74,11 @@ exports.createSchemaCustomization = ({ actions }) => {
     bio: String
     title: String
     picture: File
+  }
+  type PromotionObject {
+    url: String
+    title: String
+    description: String
   }
 `;
   createTypes(typeDefs);
