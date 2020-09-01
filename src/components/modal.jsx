@@ -21,7 +21,7 @@ class OpenModal extends React.Component {
 
     return (
       <div>
-        <Button outlined color={button.color || 'w'} onClick={this.open}>
+        <Button color={button.color || 'w'} onClick={this.open}>
           {button.text || 'Open'}
         </Button>
         <Modal show={show} onClose={this.close} {...modal}>

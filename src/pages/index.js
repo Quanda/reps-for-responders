@@ -22,6 +22,7 @@ const Index = ({ data }) => {
     gallery,
     news,
     promotions,
+    reviews,
     employees,
   } = data.strapiBusiness;
   const {
@@ -415,39 +416,48 @@ const Index = ({ data }) => {
         <Hero.Body>
           <Columns>
             <Columns.Column />
-            {/* EVENTS */}
             <Columns.Column size="two-fifths">
               <Heading renderAs="h2">
-                <FontAwesomeIcon size="1x" icon={['fas', 'calendar-alt']} />
-                Events
+                <FontAwesomeIcon size="1x" icon={['fas', 'comments']} />
+                Testimonials
               </Heading>
-              {events && events.length > 0 ? (
+              {reviews.length > 0 && (
                 <List>
-                  {events.map((e) => (
-                    <Card key={e.name}>
+                  {reviews.map((review) => (
+                    <Card key={review.text.substring(0, 15)}>
                       <Card.Content>
-                        <Media>
-                          <Media.Item renderAs="figure" position="left">
-                            <FontAwesomeIcon size="2x" icon={faCalendarDay} />
-                          </Media.Item>
-                          <Media.Item>
-                            <Heading renderAs="h5" size={5}>
-                              {e.date}
-                            </Heading>
-                            <Heading renderAs="h5" subtitle size={5}>
-                              {e.name}
-                            </Heading>
-                          </Media.Item>
-                        </Media>
-                        <Content>{e.description}</Content>
+                        <Heading renderAs="h6" size={6}>
+                          by {review.reviewer}
+                        </Heading>
+                        <Heading subtitle size={4}>
+                          {review.text.substring(0, 100)}...(continued)
+                        </Heading>
+                        <Content>
+                          <Modal
+                            modal={{ closeOnBlur: true, showClose: true }}
+                            button={{
+                              color: 'primary',
+                              text: 'Keep reading',
+                            }}
+                          >
+                            <Hero size="small" color="white">
+                              <Hero.Body>
+                                <Heading renderAs="h3">
+                                  from: {review.reviewer || 'Anonymous'}
+                                </Heading>
+                                <Content>{review.text}</Content>
+                              </Hero.Body>
+                            </Hero>
+                          </Modal>
+                        </Content>
                       </Card.Content>
                     </Card>
                   ))}
                 </List>
-              ) : (
-                <Content>No events listed at this time.</Content>
               )}
             </Columns.Column>
+            <Columns.Column />
+
             {/* IMAGE GALLERY */}
             <Columns.Column size="two-fifths">
               <Heading renderAs="h2">
@@ -472,6 +482,46 @@ const Index = ({ data }) => {
           </Columns>
         </Hero.Body>
       </Hero>
+
+      {/* EVENTS */}
+      {events && events.length > 0 && (
+        <Hero>
+          <Hero.Body>
+            <Columns>
+              <Columns.Column />
+              <Columns.Column size="two-fifths">
+                <Heading renderAs="h2">
+                  <FontAwesomeIcon size="1x" icon={['fas', 'calendar-alt']} />
+                  Events
+                </Heading>
+                <List>
+                  {events.map((e) => (
+                    <Card key={e.name}>
+                      <Card.Content>
+                        <Media>
+                          <Media.Item renderAs="figure" position="left">
+                            <FontAwesomeIcon size="2x" icon={faCalendarDay} />
+                          </Media.Item>
+                          <Media.Item>
+                            <Heading renderAs="h5" size={5}>
+                              {e.date}
+                            </Heading>
+                            <Heading renderAs="h5" subtitle size={5}>
+                              {e.name}
+                            </Heading>
+                          </Media.Item>
+                        </Media>
+                        <Content>{e.description}</Content>
+                      </Card.Content>
+                    </Card>
+                  ))}
+                </List>
+              </Columns.Column>
+              <Columns.Column />
+            </Columns>
+          </Hero.Body>
+        </Hero>
+      )}
 
       {/* DONATION */}
       <Hero id="donate" size="medium" color="primary">
@@ -552,6 +602,7 @@ Index.propTypes = {
     news: PropTypes.array,
     employees: PropTypes.array,
     promotions: PropTypes.array,
+    reviews: PropTypes.array,
   }).isRequired,
 };
 
@@ -624,6 +675,10 @@ export const query = graphql`
         url
         title
         description
+      }
+      reviews {
+        reviewer
+        text
       }
       employees {
         id

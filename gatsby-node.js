@@ -33,6 +33,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     news: [NewsObject]
     employees: [Employee]
     promotions: [PromotionObject]
+    reviews: [ReviewObject]
   }
   type Event {
     name: String
@@ -79,6 +80,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     url: String
     title: String
     description: String
+  }
+  type ReviewObject {
+    reviewer: String
+    text: String
   }
 `;
   createTypes(typeDefs);
