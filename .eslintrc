@@ -25,6 +25,7 @@
     "camelcase": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-unused-vars": ["warn"]
   }
 }
