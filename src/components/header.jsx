@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Heading from 'react-bulma-components/lib/components/heading';
+import Content from 'react-bulma-components/lib/components/content';
 
 const HeaderBar = styled.div`
   display: flex;
@@ -27,10 +28,19 @@ const HeaderBar = styled.div`
   }
 `;
 
+const NoticeTextAlt = styled.span`
+  display: block;
+  padding: 6px 12px;
+  background-color: var(--theme-blue-dark);
+  color: var(--theme-yellow);
+  text-align: center;
+`;
+
 const NoticeText = styled.span`
   position: absolute;
-  right: 16px;
   bottom: 8px;
+  width: 100%;
+  text-align: center;
   font-size: 0.75rem;
   color: var(--theme-yellow);
 `;
@@ -56,6 +66,18 @@ const Banner = styled.div`
 const Header = ({ title, banner, caption, logoSrc }) => (
   <header>
     {banner && <Banner>{banner}</Banner>}
+    <NoticeTextAlt>
+      Visit{' '}
+      <Content
+        renderAs="a"
+        href="https://valorsupplements.net"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        valorsupplements.net
+      </Content>{' '}
+      and enter code <b>RFR10</b> for 10% off your total purchase
+    </NoticeTextAlt>
     <HeaderBar>
       <img src={logoSrc} alt="logo" />
       <div className="col">
@@ -68,7 +90,11 @@ const Header = ({ title, banner, caption, logoSrc }) => (
           </Heading>
         )}
       </div>
-      <NoticeText>New location coming soon...</NoticeText>
+      <NoticeText>
+        FREE OPEN GYM FOR FIRST RESPONDERS AND MILITARY @ IRON FIST ATHLETICS
+        149 MAIN STREET, NANUET, NY 10954 EVERY TUESDAY AND THURSDAY FROM 1030
+        AM- 230 PM
+      </NoticeText>
     </HeaderBar>
   </header>
 );
