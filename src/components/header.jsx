@@ -10,7 +10,7 @@ const HeaderBar = styled.div`
   align-items: center;
   justify-content: flex-start;
   text-transform: uppercase;
-  padding: 4rem 2rem;
+  padding: 3rem 3rem 6rem 3rem;
   width: 100%;
   position: relative;
   background-color: var(--theme-blue-dark);
@@ -39,9 +39,13 @@ const NoticeTextAlt = styled.span`
 const NoticeText = styled.span`
   position: absolute;
   bottom: 8px;
+  left: 0;
+  right: 0;
+  margin: auto;
   width: 100%;
   text-align: center;
   font-size: 0.75rem;
+  padding: 0px 3rem;
   color: var(--theme-yellow);
 `;
 
