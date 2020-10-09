@@ -110,8 +110,10 @@ class ContactForm extends React.Component {
           </Field>
           {process.env.SITE_RECAPTCHA_KEY && (
             <ReCAPTCHA
+              size="compact"
               sitekey={process.env.SITE_RECAPTCHA_KEY}
               onChange={this.onRecaptchaChange}
+              style={{ display: 'flex', justifyContent: 'flex-end' }}
             />
           )}
           <br />
