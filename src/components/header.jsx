@@ -96,7 +96,7 @@ const Header = ({ title, banner, caption, logoSrc }) => (
       </div>
       <NoticeText>
         FREE OPEN GYM FOR FIRST RESPONDERS AND MILITARY @ IRON FIST ATHLETICS
-        149 MAIN STREET, NANUET, NY 10954 EVERY TUESDAY AND THURSDAY FROM 1030
+        149 MAIN STREET, NANUET, NY 10954 EVERY MONDAY AND THURSDAY FROM 1030
         AM- 230 PM
       </NoticeText>
     </HeaderBar>
