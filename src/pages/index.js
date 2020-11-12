@@ -75,10 +75,9 @@ const Index = ({ data }) => {
                   <Content renderAs="ul">
                     <Content renderAs="li">
                       Free entry to all first responder and military personnel
-                      at our training gym
+                      at Iron Fist Athletics Gym every Saturday from 10:30AM - 1 PM)
                     </Content>
-                    <Content renderAs="li">Online fitness classes</Content>
-                    <Content renderAs="li">Virtual support groups</Content>
+                    <Content renderAs="li">ResponderTalk via Zoom (Wednesdays at 12:30 PM & Sundays at 7 PM)</Content>
                   </Content>
                   <Content className="row evenly">
                     <FontAwesomeIcon size="3x" icon={['fas', 'dumbbell']} />
